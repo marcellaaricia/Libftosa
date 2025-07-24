@@ -18,23 +18,37 @@ Documentar meu processo de aprendizado das funções da libft da 42SP, criando u
 ## 🗂️ Estrutura do Repositório
 
 ```
-libft-learning-guide/
-├── docs/                    # Documentação do guia
-│   ├── index.html          # Página principal
-│   ├── assets/             # CSS, JS, imagens
-│   └── functions/          # Páginas individuais das funções
-├── examples/               # Exemplos de uso (SEM implementações)
-│   ├── basic_usage/        # Como usar as funções
-│   └── test_cases/         # Casos de teste para validação
-├── resources/              # Recursos de estudo
-│   ├── ascii_table.md      # Tabela ASCII
-│   ├── memory_concepts.md  # Conceitos de memória
-│   └── string_theory.md    # Teoria sobre strings
-├── learning_notes/         # Minhas anotações pessoais
-│   ├── challenges.md       # Desafios enfrentados
-│   ├── discoveries.md      # Descobertas durante o processo
-│   └── progress.md         # Progresso semanal
-└── README.md               # Este arquivo
+libftosa/
+├── README.md                    # Página principal
+├── docs/                        # Documentação das funções
+│   ├── character/              # Funções de caractere
+│   │   ├── ft_isalpha.md
+│   │   ├── ft_isdigit.md
+│   │   ├── ft_isalnum.md
+│   │   ├── ft_isascii.md
+│   │   └── ft_isprint.md
+│   ├── string/                 # Funções de string  
+│   │   ├── ft_strlen.md
+│   │   ├── ft_strchr.md
+│   │   └── ...
+│   ├── memory/                 # Funções de memória
+│   │   ├── ft_memset.md
+│   │   ├── ft_memcpy.md
+│   │   └── ...
+│   └── additional/             # Funções adicionais
+│       ├── ft_substr.md
+│       ├── ft_strjoin.md
+│       └── ...
+├── examples/                   # Seus testes (privados)
+│   ├── character/
+│   │   └── test_ft_isalpha.c
+│   └── ...
+├── resources/                  # Material de apoio
+│   ├── ascii_table.md
+│   ├── concepts.md
+│   └── ...
+└── assets/                     # CSS, imagens, etc
+    └── style.css             # Este arquivo
 ```
 
 ## 🎓 Para Estudantes da 42
