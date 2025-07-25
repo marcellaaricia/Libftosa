@@ -257,25 +257,24 @@ retorna resultado_da_expressão
 ## ✍️ NOTAS PESSOAIS
 
 ### 📝 Meu Processo de Aprendizado
-> **Documenta aqui suas descobertas, dificuldades e insights durante a implementação!**
 
 **Dificuldades encontradas:**
-- [ ] Entender por que `int` ao invés de `char`
+- [x] Entender por que `int` ao invés de `char`
 - [ ] Lembrar dos valores ASCII das letras
 - [ ] Implementar sem usar `if/else`
 - [ ] Entender o conceito de short-circuit
 
 **Descobertas importantes:**
-- [ ] Como funciona o short-circuit em `||`
+- [x] Como funciona o short-circuit em `||`
 - [ ] Diferença entre caracteres e números ASCII
 - [ ] Por que a implementação é tão elegante
 - [ ] Relação entre maiúsculas e minúsculas (+32)
 
 **Testes que fiz:**
-- [ ] Teste com letras normais
-- [ ] Teste com números
-- [ ] Teste com símbolos
-- [ ] Teste com caracteres especiais
+- [x] Teste com letras normais
+- [x] Teste com números
+- [x] Teste com símbolos
+- [x] Teste com caracteres especiais
 
 ---
 
