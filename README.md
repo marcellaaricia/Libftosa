@@ -22,33 +22,33 @@ libftosa/
 ├── README.md                    # Página principal
 ├── docs/                        # Documentação das funções
 │   ├── character/              # Funções de caractere
-│   │   ├── ft_isalpha.md
-│   │   ├── ft_isdigit.md
-│   │   ├── ft_isalnum.md
-│   │   ├── ft_isascii.md
-│   │   └── ft_isprint.md
+│   │   ├── ft_isalpha.md       ✅ Concluído
+│   │   ├── ft_isdigit.md       🚧 Em progresso
+│   │   ├── ft_isalnum.md       ⏳ Planejado
+│   │   ├── ft_isascii.md       ⏳ Planejado
+│   │   └── ft_isprint.md       ⏳ Planejado
 │   ├── string/                 # Funções de string  
-│   │   ├── ft_strlen.md
-│   │   ├── ft_strchr.md
+│   │   ├── ft_strlen.md        ⏳ Planejado
+│   │   ├── ft_strchr.md        ⏳ Planejado
 │   │   └── ...
 │   ├── memory/                 # Funções de memória
-│   │   ├── ft_memset.md
-│   │   ├── ft_memcpy.md
+│   │   ├── ft_memset.md        ⏳ Planejado
+│   │   ├── ft_memcpy.md        ⏳ Planejado
 │   │   └── ...
 │   └── additional/             # Funções adicionais
-│       ├── ft_substr.md
-│       ├── ft_strjoin.md
+│       ├── ft_substr.md        ⏳ Planejado
+│       ├── ft_strjoin.md       ⏳ Planejado
 │       └── ...
-├── examples/                   # Seus testes (privados)
+├── examples/                   # Testes e exemplos
 │   ├── character/
-│   │   └── test_ft_isalpha.c
+│   │   └── test_ft_isalpha.c   🧪 Teste da ft_isalpha
 │   └── ...
 ├── resources/                  # Material de apoio
-│   ├── ascii_table.md
-│   ├── concepts.md
+│   ├── ascii_table.md          📊 Tabela ASCII completa
+│   ├── concepts.md             🧠 Conceitos fundamentais
 │   └── ...
 └── assets/                     # CSS, imagens, etc
-    └── style.css             # Este arquivo
+    └── style.css               🎨 Estilos do site
 ```
 
 ## 🎓 Para Estudantes da 42
