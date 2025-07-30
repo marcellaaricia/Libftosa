@@ -278,7 +278,7 @@ retorna resultado_da_expressão
 
 ---
 
-**[📚 Voltar ao Índice](../../README.md)** | **[Próxima: ft_isdigit →](ft_isdigit.md)**
+**[📚 Voltar ao Índice](../../README.md)** | **[Próxima Função: ft_isdigit →](ft_isdigit.md)**
 
 ---
 
