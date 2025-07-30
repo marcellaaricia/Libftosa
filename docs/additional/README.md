@@ -19,6 +19,6 @@
 
 ---
 
-**[📚 Voltar ao Índice](../../README.md)**
+**[🔤 ← Caractere](../character/README.md)** | **[📝 ← String](../string/README.md)** | **[🧠 ← Memória](../memory/README.md)** | **[🏠 Início](../../README.md)** | **[🔗 Bonus →](../bonus/README.md)**
 
 ---
