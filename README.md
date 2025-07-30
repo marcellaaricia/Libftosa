@@ -9,47 +9,19 @@ Documentar meu processo de aprendizado das funções da libft da 42SP, criando u
 ## 📋 Status do Projeto
 
 ```
-🟢 Concluído: Estrutura base, ft_isalpha
-🟡 Em desenvolvimento: ft_isdigit, ft_isalnum, ft_isascii
-🔴 Planejado: Demais funções da parte obrigatória
+🟢 Concluído: Funções de Caractere
+🟡 Em desenvolvimento: Funções de String
+🔴 Planejado: Demais funções da parte obrigatória (Memória e Adicionais)
 ⚪ Futuro: Funções bonus (listas ligadas)
 ```
-
 ## 🗂️ Estrutura do Repositório
 
-```
-libftosa/
-├── README.md                    # Página principal
-├── docs/                        # Documentação das funções
-│   ├── character/              # Funções de caractere
-│   │   ├── ft_isalpha.md       ✅ Concluído
-│   │   ├── ft_isdigit.md       🚧 Em progresso
-│   │   ├── ft_isalnum.md       ⏳ Planejado
-│   │   ├── ft_isascii.md       ⏳ Planejado
-│   │   └── ft_isprint.md       ⏳ Planejado
-│   ├── string/                 # Funções de string  
-│   │   ├── ft_strlen.md        ⏳ Planejado
-│   │   ├── ft_strchr.md        ⏳ Planejado
-│   │   └── ...
-│   ├── memory/                 # Funções de memória
-│   │   ├── ft_memset.md        ⏳ Planejado
-│   │   ├── ft_memcpy.md        ⏳ Planejado
-│   │   └── ...
-│   └── additional/             # Funções adicionais
-│       ├── ft_substr.md        ⏳ Planejado
-│       ├── ft_strjoin.md       ⏳ Planejado
-│       └── ...
-├── examples/                   # Testes e exemplos
-│   ├── character/
-│   │   └── test_ft_isalpha.c   🧪 Teste da ft_isalpha
-│   └── ...
-├── resources/                  # Material de apoio
-│   ├── ascii_table.md          📊 Tabela ASCII completa
-│   ├── concepts.md             🧠 Conceitos fundamentais
-│   └── ...
-└── assets/                     # CSS, imagens, etc
-    └── style.css               🎨 Estilos do site
-```
+├── [🔤 Funções de Caractere](docs/character/README.md) - 7 funções
+├── [📝 Funções de String](docs/string/README.md) - 8 funções  
+├── [🧠 Funções de Memória](docs/memory/README.md) - 7 funções
+├── [🔧 Funções Adicionais](docs/additional/README.md) - 12 funções
+└── [🔗 Funções Bonus](docs/bonus/README.md) - 9 funções
+
 
 ## 🎓 Para Estudantes da 42
 
