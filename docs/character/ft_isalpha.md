@@ -2,9 +2,13 @@
 
 > 🔤 Verifica se um caractere é alfabético
 
-Categoria: [Funções de Caractere](./README.md)
+---
 
-Arquivo: ft_isalpha.c
+**Categoria:** [Funções de Caractere](./README.md)
+
+**Repositório:** [Libftosa](../../README.md)
+
+**Arquivo:** `ft_isalpha.c`
 
 ---
 
