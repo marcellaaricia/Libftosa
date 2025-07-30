@@ -2,8 +2,12 @@
 
 > 🔢 Verifica se um caractere é um dígito numérico
 
-Categoria: [Funções de Caractere](./README.md)
+---
+
+**Categoria:** [Funções de Caractere](./README.md)
+
 **Repositório:** [Libftosa](../../README.md)
+
 **Arquivo:** `ft_isdigit.c`
 
 ---
