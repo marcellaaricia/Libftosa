@@ -2,8 +2,12 @@
 
 > 🔤🔢 Verifica se um caractere é alfanumérico (letra ou dígito)
 
-**Categoria:** [Funções de Caractere](../../README.md#-funções-de-caractere)  
+---
+
+**Categoria:** [Funções de Caractere](./README.md)
+
 **Repositório:** [Libftosa](../../README.md)
+
 **Arquivo:** `ft_isalnum.c`
 
 ---
@@ -328,12 +332,13 @@ Em ft_isalpha(c) || ft_isdigit(c):
 - [ ] Que outros caracteres são considerados "válidos" em diferentes contextos?
 
 ---
+<div align="center">
 
-**[← Função Anterior: ft_isdigit](ft_isdigit.md)** | **[📚 Voltar ao Índice](../../README.md)** | **[Próxima Função: ft_isascii →](ft_isascii.md)**
+**[← Função Anterior: ft_isdigit](ft_isdigit.md)** | **[Próxima Função: ft_isascii →](ft_isascii.md)**
+
+🔤 [Funções de Caractere](./README.md) | [📚 Voltar ao Índice](../../README.md)
 
 ---
-
-<div align="center">
 
 **🛡️ Material Educativo - Libftosa**  
 *Desenvolvendo conceitos, não copiando soluções*
