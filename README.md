@@ -16,12 +16,15 @@ Documentar meu processo de aprendizado das funções da libft da 42SP, criando u
 ```
 ## 🗂️ Estrutura do Repositório
 
-├── [🔤 Funções de Caractere](docs/character/README.md) - 7 funções
-├── [📝 Funções de String](docs/string/README.md) - 8 funções  
-├── [🧠 Funções de Memória](docs/memory/README.md) - 7 funções
-├── [🔧 Funções Adicionais](docs/additional/README.md) - 12 funções
-└── [🔗 Funções Bonus](docs/bonus/README.md) - 9 funções
+├── [Funções de Caractere](docs/character/README.md) - 7 funções 🔤
 
+├── [Funções de String](docs/string/README.md) - 8 funções 📝
+
+├── [Funções de Memória](docs/memory/README.md) - 7 funções 🧠
+
+├── [Funções Adicionais](docs/additional/README.md) - 12 funções 🔧
+
+└── [Funções Bonus](docs/bonus/README.md) - 9 funções 🔗
 
 ## 🎓 Para Estudantes da 42
 
