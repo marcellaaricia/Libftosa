@@ -2,7 +2,7 @@
 
 > 🔢 Verifica se um caractere é um dígito numérico
 
-**Categoria:** [Funções de Caractere](../../README.md#-funções-de-caractere)  
+Categoria: [Funções de Caractere](./README.md)
 **Repositório:** [Libftosa](../../README.md)
 **Arquivo:** `ft_isdigit.c`
 
@@ -302,12 +302,13 @@ ft_isdigit é mais eficiente! ⚡
 - [ ] Teste com caracteres especiais
 
 ---
+<div align="center">
 
-**[← Função Anterior: ft_isalpha](ft_isalpha.md)** | **[📚 Voltar ao Índice](../../README.md)** | **[Próxima Função: ft_isalnum →](ft_isalnum.md)**
+**[← Função Anterior: ft_isalpha](ft_isalpha.md)** | **[Próxima Função: ft_isalnum →](ft_isalnum.md)**
+
+🔤 [Funções de Caractere](./README.md) | [📚 Voltar ao Índice](../../README.md)
 
 ---
-
-<div align="center">
 
 **🛡️ Material Educativo - Libftosa**  
 *Desenvolvendo conceitos, não copiando soluções*
