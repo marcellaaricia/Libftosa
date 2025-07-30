@@ -1,5 +1,3 @@
-# docs/string/README.md
-
 # 📝 Funções de String
 
 > Funções para manipular strings (arrays de caracteres)
