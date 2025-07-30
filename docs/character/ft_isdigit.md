@@ -303,7 +303,7 @@ ft_isdigit é mais eficiente! ⚡
 
 ---
 
-**🔤 [← Funções de Caractere](../../README.md#-funções-de-caractere)** | **[📚 Voltar ao Índice](../../README.md)** | **[Anterior: ft_isalpha ←](ft_isalpha.md)** | **[Próxima: ft_isalnum →](ft_isalnum.md)**
+**[← Função Anterior: ft_isalpha](ft_isalpha.md)** | **[📚 Voltar ao Índice](../../README.md)** | **[Próxima Função: ft_isalnum →](ft_isalnum.md)**
 
 ---
 
