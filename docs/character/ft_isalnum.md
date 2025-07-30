@@ -244,7 +244,7 @@ retorna resultado
 ## 🔗 FUNÇÕES RELACIONADAS
 
 ### 🔤 Funções Base (Dependências)
-- [`ft_isalpha`](ft_isalpha.md) - Verifica se é letra (A-Z, a-z)
+- [`ft_isalpha`](ft_isalpha.md) - Verifica se é letra (A-Z, a-z)←
 - [`ft_isdigit`](ft_isdigit.md) - Verifica se é dígito (0-9)
 
 ### 🔤 Mesma Categoria
@@ -329,7 +329,7 @@ Em ft_isalpha(c) || ft_isdigit(c):
 
 ---
 
-**🔤 [← Funções de Caractere](../../README.md#-funções-de-caractere)** | **[📚 Voltar ao Índice](../../README.md)** | **[Anterior: ft_isdigit ←](ft_isdigit.md)** | **[Próxima: ft_isascii →](ft_isascii.md)**
+**[← Função Anterior: ft_isdigit](ft_isdigit.md)** | **[📚 Voltar ao Índice](../../README.md)** | **[Próxima Função: ft_isascii →](ft_isascii.md)**
 
 ---
 
