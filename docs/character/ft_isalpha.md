@@ -2,8 +2,9 @@
 
 > 🔤 Verifica se um caractere é alfabético
 
-**Categoria:** [Funções de Caractere](docs/character/README.md)
-**Arquivo:** `ft_isalpha.c`
+Categoria: [Funções de Caractere](./README.md)
+
+Arquivo: ft_isalpha.c
 
 ---
 
@@ -279,10 +280,10 @@ retorna resultado_da_expressão
 
 ---
 <div align="center">
-  
-**[Próxima Função: ft_isdigit →](ft_isdigit.md)**
 
-**🔤 [Funções de Caractere](docs/character/README.md)** | **[📚 Voltar ao Índice](../../README.md)**
+[Próxima Função: ft_isdigit →](ft_isdigit.md)
+
+🔤 [Funções de Caractere](./README.md) | [📚 Voltar ao Índice](../../README.md)
 
 ---
 
