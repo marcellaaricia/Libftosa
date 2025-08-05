@@ -191,7 +191,7 @@ unsigned char real = 300;  // 01001100 (44 decimal)
 
 <div align="center">
 
-**[← Função Anterior: ft_bzero](ft_bzero.md)** | **[Próxima Função: ft_memcpy →](ft_memcpy.md)**
+**[Próxima Função: ft_bzero →](ft_bzero.md)**
 
 🧠 [Funções de Memória](./README.md) | [📚 Voltar ao Índice](../../README.md)
 
