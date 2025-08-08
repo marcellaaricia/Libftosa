@@ -2,7 +2,7 @@
 
 > Funções para manipular listas ligadas
 
-## 📋 Lista de Funções
+## 📋 Funções de lista
 
 - [ft_lstnew.md](ft_lstnew.md) - Cria novo nó da lista
 - [ft_lstadd_front.md](ft_lstadd_front.md) - Adiciona nó no início da lista

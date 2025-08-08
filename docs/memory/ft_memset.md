@@ -2,6 +2,23 @@
 
 > 🧱 Preenche um bloco de memória com um valor específico
 
+---
+
+**Categoria:** [Funções de Memória](./README.md)
+
+**Repositório:** [Libftosa](../../README.md)
+
+**Arquivo:** `ft_memset.c`
+
+---
+
+## ⚠️ AVISO EDUCATIVO
+
+**Este material é puramente didático e NÃO contém implementações completas.**  
+Se você é estudante da 42, use apenas para **entender conceitos** e desenvolva sua própria solução.
+
+---
+
 ## 📋 SINOPSE
 
 **Arquivo de Cabeçalho:**
