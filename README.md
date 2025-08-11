@@ -9,9 +9,9 @@ Documentar meu processo de aprendizado das funções da libft da 42SP, criando u
 ## 📋 Status do Projeto
 
 ```
-🟢 Concluído: Funções de Caractere
-🟡 Em desenvolvimento: Funções de String
-🔴 Planejado: Demais funções da parte obrigatória (Memória e Adicionais)
+🟢 Concluído: Funções de Caractere, String e Memória
+🟡 Em desenvolvimento: Funções de Adicionais
+🔴 Planejado: Testes
 ⚪ Futuro: Funções bonus (listas ligadas)
 ```
 ## 🗂️ Estrutura do Repositório
