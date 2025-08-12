@@ -2,6 +2,17 @@
 
 > **🚨 AVISO IMPORTANTE**: Este repositório contém material **educativo** sobre as funções da libft. **NÃO contém implementações completas** para evitar problemas acadêmicos. Se você é estudante da 42, use apenas como referência conceitual.
 
+## 🎮 Simulador Interativo
+
+**Teste todas as funções da libft em tempo real!**
+
+[![🚀 Acessar Simulador](https://img.shields.io/badge/🚀_Simulador-Libft_Interativo-00ff88?style=for-the-badge)](libftosa/index.html)
+
+- ✅ 43 funções implementadas (incluindo bonus)
+- 🧪 Interface intuitiva para testes
+- 📱 Funciona em qualquer dispositivo
+
+
 ## 🎯 Objetivo
 
 Documentar meu processo de aprendizado das funções da libft da 42SP, criando um guia didático em português para a comunidade brasileira.
