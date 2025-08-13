@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libft - Funções Adicionais 🚀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.3);
+            height: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 80%; /* 4/5 categorias */
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .motivational {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .function-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .function-title {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block::before {
+            content: "💻 Código";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .explanation {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #5a6fd8;
+        }
+
+        .explanation h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .line-by-line {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .line-comment {
+            color: #718096;
+            font-style: italic;
+            margin-left: 20px;
+            font-size: 0.9em;
+        }
+
+        .example {
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: #2d3748;
+        }
+
+        .example h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .test-case {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-family: monospace;
+        }
+
+        .tips {
+            background: linear-gradient(45deg, #6c5ce7, #74b9ff);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: white;
+        }
+
+        .tips h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-button.secondary {
+            background: linear-gradient(45deg, #636e72, #2d3436);
+        }
+
+        .warning {
+            background: linear-gradient(45deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #d63031;
+        }
+
+        .bonus-tip {
+            background: linear-gradient(45deg, #fdcb6e, #e17055);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e84393;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+        }
+
+        .category-divider {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.3em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .function-title {
+                font-size: 1.5em;
+            }
+            .code-block {
+                font-size: 12px;
+            }
+            .navigation {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Libft - Funções Adicionais 🚀</h1>
+            <p>As funções mais criativas da libft! É aqui que a mágica acontece! ✨</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p><strong>Progresso:</strong> Funções Adicionais (4/5 categorias)</p>
+        </div>
+
+        <div class="motivational">
+            <h2>🎯 Agora é que fica interessante!</h2>
+            <p>Essas funções não existem na libc padrão - elas são criações especiais da 42! 🌟</p>
+            <p>Aqui você vai criar suas próprias ferramentas poderosas de manipulação de strings e I/O!</p>
+        </div>
+
+        <!-- ft_substr -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">✂️</span>
+                ft_substr - "Recorta e cola!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+char *ft_substr(char const *s, unsigned int start, size_t len)
+{
+    char *substr;
+    size_t i;
+    size_t s_len;
+
+    if (!s)
+        return (NULL);
+    s_len = ft_strlen(s);
+    if (start >= s_len)
+        return (ft_strdup(""));
+    if (len > s_len - start)
+        len = s_len - start;
+    substr = malloc(sizeof(char) * (len + 1));
+    if (!substr)
+        return (NULL);
+    i = 0;
+    while (i < len && s[start + i])
+    {
+        substr[i] = s[start + i];
+        i++;
+    }
+    substr[i] = '\0';
+    return (substr);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Extrai uma substring começando na posição 'start' com tamanho máximo 'len'. É como usar uma tesoura para recortar um pedaço da string!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_substr("Hello World", 6, 5) → "World"</div>
+                <div class="test-case">ft_substr("42School", 2, 4) → "Scho"</div>
+                <div class="test-case">ft_substr("Test", 10, 5) → "" (start além do fim)</div>
+            </div>
+        </div>
+
+        <!-- ft_strjoin -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔗</span>
+                ft_strjoin - "Cola duas strings!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+char *ft_strjoin(char const *s1, char const *s2)
+{
+    char *result;
+    size_t len1;
+    size_t len2;
+    size_t i;
+
+    if (!s1 || !s2)
+        return (NULL);
+    len1 = ft_strlen(s1);
+    len2 = ft_strlen(s2);
+    result = malloc(sizeof(char) * (len1 + len2 + 1));
+    if (!result)
+        return (NULL);
+    i = 0;
+    while (i < len1)
+    {
+        result[i] = s1[i];
+        i++;
+    }
+    while (i < len1 + len2)
+    {
+        result[i] = s2[i - len1];
+        i++;
+    }
+    result[i] = '\0';
+    return (result);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Junta duas strings criando uma nova string. É como colar dois papéis um do lado do outro!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_strjoin("Hello", " World") → "Hello World"</div>
+                <div class="test-case">ft_strjoin("42", "School") → "42School"</div>
+            </div>
+        </div>
+
+        <!-- ft_strtrim -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">✨</span>
+                ft_strtrim - "Limpa as bordas!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+char *ft_strtrim(char const *s1, char const *set)
+{
+    size_t start;
+    size_t end;
+
+    if (!s1 || !set)
+        return (NULL);
+    start = 0;
+    while (s1[start] && ft_strchr(set, s1[start]))
+        start++;
+    end = ft_strlen(s1);
+    while (end > start && ft_strchr(set, s1[end - 1]))
+        end--;
+    return (ft_substr(s1, start, end - start));
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Remove todos os caracteres do conjunto 'set' do início e fim da string. É como aparar as pontas de uma corda!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_strtrim("   Hello   ", " ") → "Hello"</div>
+                <div class="test-case">ft_strtrim("###42###", "#") → "42"</div>
+                <div class="test-case">ft_strtrim("abcHelloba", "ab") → "cHello"</div>
+            </div>
+        </div>
+
+        <!-- ft_split -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🪓</span>
+                ft_split - "Corta em pedaços!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+static int count_words(char const *s, char c)
+{
+    int count = 0;
+    int in_word = 0;
+    
+    while (*s)
+    {
+        if (*s != c && !in_word)
+        {
+            in_word = 1;
+            count++;
+        }
+        else if (*s == c)
+            in_word = 0;
+        s++;
+    }
+    return (count);
+}
+
+char **ft_split(char const *s, char c)
+{
+    char **result;
+    int words;
+    int i = 0;
+    int start, end;
+
+    if (!s) return (NULL);
+    words = count_words(s, c);
+    result = malloc(sizeof(char*) * (words + 1));
+    if (!result) return (NULL);
+    
+    int j = 0;
+    while (j < words)
+    {
+        while (s[i] == c) i++;
+        start = i;
+        while (s[i] && s[i] != c) i++;
+        end = i;
+        result[j] = ft_substr(s, start, end - start);
+        j++;
+    }
+    result[j] = NULL;
+    return (result);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Divide uma string usando um delimitador, criando um array de strings. É como cortar uma frase em palavras!</p>
+            </div>
+
+            <div class="warning">
+                <h3>⚠️ ATENÇÃO!</h3>
+                <p>Lembre-se de liberar CADA string do array E o próprio array quando terminar de usar!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_split("Hello World 42", ' ') → ["Hello", "World", "42"]</div>
+                <div class="test-case">ft_split("a,b,c,d", ',') → ["a", "b", "c", "d"]</div>
+            </div>
+        </div>
+
+        <!-- ft_itoa -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔢</span>
+                ft_itoa - "Número vira texto!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+static int get_num_len(int n)
+{
+    int len = 0;
+    if (n == 0) return (1);
+    if (n < 0) len++;
+    while (n != 0)
+    {
+        n /= 10;
+        len++;
+    }
+    return (len);
+}
+
+char *ft_itoa(int n)
+{
+    char *str;
+    int len;
+    unsigned int num;
+
+    if (n == -2147483648)
+        return (ft_strdup("-2147483648"));
+    len = get_num_len(n);
+    str = malloc(sizeof(char) * (len + 1));
+    if (!str) return (NULL);
+    str[len] = '\0';
+    num = (n < 0) ? -n : n;
+    if (n < 0) str[0] = '-';
+    if (n == 0) str[0] = '0';
+    while (num > 0)
+    {
+        str[--len] = (num % 10) + '0';
+        num /= 10;
+    }
+    return (str);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Converte um inteiro para string. É o contrário da ft_atoi - transforma números em texto!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_itoa(42) → "42"</div>
+                <div class="test-case">ft_itoa(-123) → "-123"</div>
+                <div class="test-case">ft_itoa(0) → "0"</div>
+            </div>
+        </div>
+
+        <!-- ft_atoi -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📝</span>
+                ft_atoi - "Texto vira número!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_atoi(const char *str)
+{
+    int i = 0;
+    int sign = 1;
+    int result = 0;
+
+    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+        i++;
+    if (str[i] == '-' || str[i] == '+')
+    {
+        if (str[i] == '-')
+            sign = -1;
+        i++;
+    }
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        result = result * 10 + (str[i] - '0');
+        i++;
+    }
+    return (result * sign);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Converte uma string para inteiro. Para nos espaços, lê sinais (+/-) e converte dígitos em número!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_atoi("42") → 42</div>
+                <div class="test-case">ft_atoi("   -123") → -123</div>
+                <div class="test-case">ft_atoi("+456abc") → 456</div>
+            </div>
+        </div>
+
+        <div class="category-divider">
+            <h2>🎨 Funções de Mapeamento</h2>
+            <p>Transforme strings aplicando funções a cada caractere!</p>
+        </div>
+
+        <!-- ft_strmapi -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🎨</span>
+                ft_strmapi - "Transforma cada char!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+    char *result;
+    unsigned int i;
+    size_t len;
+
+    if (!s || !f)
+        return (NULL);
+    len = ft_strlen(s);
+    result = malloc(sizeof(char) * (len + 1));
+    if (!result)
+        return (NULL);
+    i = 0;
+    while (i < len)
+    {
+        result[i] = f(i, s[i]);
+        i++;
+    }
+    result[i] = '\0';
+    return (result);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Cria uma nova string aplicando a função 'f' a cada caractere. A função recebe o índice e o caractere!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplo prático:</h3>
+                <div class="test-case">Pode ser usada para converter para maiúscula, minúscula, ou qualquer transformação!</div>
+            </div>
+        </div>
+
+        <!-- ft_striteri -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔄</span>
+                ft_striteri - "Modifica in-place!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+    unsigned int i;
+
+    if (!s || !f)
+        return;
+    i = 0;
+    while (s[i])
+    {
+        f(i, &s[i]);
+        i++;
+    }
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Como ft_strmapi, mas modifica a string original em vez de criar uma nova. Passa o ponteiro para o caractere!</p>
+            </div>
+        </div>
+
+        <div class="category-divider">
+            <h2>📝 Funções de Output (File Descriptors)</h2>
+            <p>Escreva em arquivos, terminal ou qualquer lugar!</p>
+        </div>
+
+        <!-- ft_putchar_fd -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📄</span>
+                ft_putchar_fd - "Escreve um char!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_putchar_fd(char c, int fd)
+{
+    write(fd, &c, 1);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Escreve um caractere no file descriptor especificado. Super simples - só uma chamada para write!</p>
+            </div>
+
+            <div class="bonus-tip">
+                <h3>💡 File Descriptors importantes:</h3>
+                <p><strong>0</strong> = stdin (entrada), <strong>1</strong> = stdout (saída), <strong>2</strong> = stderr (erros)</p>
+            </div>
+        </div>
+
+        <!-- ft_putstr_fd -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📝</span>
+                ft_putstr_fd - "Escreve uma string!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_putstr_fd(char *s, int fd)
+{
+    if (!s)
+        return;
+    write(fd, s, ft_strlen(s));
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Escreve uma string inteira no file descriptor. Calcula o tamanho e escreve tudo de uma vez!</p>
+            </div>
+        </div>
+
+        <!-- ft_putendl_fd -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📋</span>
+                ft_putendl_fd - "Escreve string + \\n!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_putendl_fd(char *s, int fd)
+{
+    if (!s)
+        return;
+    ft_putstr_fd(s, fd);
+    ft_putchar_fd('\n', fd);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Como ft_putstr_fd, mas adiciona uma quebra de linha no final. Perfeita para imprimir linhas!</p>
+            </div>
+        </div>
+
+        <!-- ft_putnbr_fd -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔢</span>
+                ft_putnbr_fd - "Escreve um número!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_putnbr_fd(int n, int fd)
+{
+    if (n == -2147483648)
+    {
+        ft_putstr_fd("-2147483648", fd);
+        return;
+    }
+    if (n < 0)
+    {
+        ft_putchar_fd('-', fd);
+        n = -n;
+    }
+    if (n >= 10)
+        ft_putnbr_fd(n / 10, fd);
+    ft_putchar_fd((n % 10) + '0', fd);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Escreve um número inteiro no file descriptor. Usa recursão para imprimir dígito por dígito!</p>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h3>💡 Dicas importantes das funções adicionais:</h3>
+            <ul>
+                <li><strong>Malloc:</strong> Muitas funções alocam memória - sempre verifique se deu certo!</li>
+                <li><strong>Free:</strong> Lembre de liberar tudo que você alocar</li>
+                <li><strong>File Descriptors:</strong> 1=stdout, 2=stderr são os mais usados</li>
+                <li><strong>Proteção:</strong> Sempre verifique parâmetros NULL</li>
+                <li><strong>ft_split:</strong> Precisa liberar cada string E o array</li>
+            </ul>
+        </div>
+
+        <div class="tips">
+            <h3>🚀 Você está quase lá!</h3>
+            <p><strong>Essas funções são o coração da libft - aprenda elas bem e você vai arrasar nos próximos projetos!</strong></p>
+        </div>
+
+        <div class="navigation">
+            <a href="../memory/libft_memory_guide.html" class="nav-button secondary">
+                ← Voltar para Memória
+            </a>
+            <div style="text-align: center;">
+                <h3>🎯 Próximo passo</h3>
+                <p>Parabéns! Você dominou as funções adicionais! 🎉</p>
+                <p>Agora vamos para o <strong>Bonus - Listas Ligadas</strong>!</p>
+            </div>
+            <a href="../bonus/libft_bonus_guide.html" class="nav-button">
+                Continuar para Bonus →
+            </a>
+        </div>
+    </div>
+</body>
+</html>
