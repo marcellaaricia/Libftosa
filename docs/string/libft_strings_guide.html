@@ -52,7 +52,7 @@
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #e91e63, #f093fb);
-            width: 28.6%; /* 2/7 categorias */
+            width: 40%; /* 2/5 categorias */
             border-radius: 5px;
             transition: width 0.3s ease;
         }
@@ -213,16 +213,6 @@
             background: linear-gradient(45deg, #636e72, #2d3436);
         }
 
-        .memory-visual {
-            background: linear-gradient(45deg, #74b9ff, #0984e3);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px 0;
-            font-family: monospace;
-            text-align: center;
-        }
-
         .string-visual {
             display: flex;
             justify-content: center;
@@ -271,8 +261,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📝 Libft - Funções de String 📝</h1>
-            <p>Agora vamos trabalhar com arrays de caracteres! Strings são diversão pura! 💖</p>
+            <h1>🌟 Libft - Funções de String 🌟</h1>
+            <p>Vamos descomplicar essas funções juntas! Você consegue! 💪</p>
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
@@ -280,7 +270,7 @@
         </div>
 
         <div class="motivational">
-            <h2>🎯 Entendendo Strings</h2>
+            <h2>🎯 Foco no que importa!</h2>
             <p>String é um array de char que termina com '\0' (caractere nulo). É como um colar de letrinhas! 📿</p>
             
             <div class="string-visual">
@@ -385,4 +375,196 @@ char *ft_strchr(const char *s, int c)
                 <p><code>while (*s)</code></p>
                 <div class="line-comment">→ Percorre a string caractere por caractere</div>
                 
-                <p><code>if
+                <p><code>if (*s == (char)c)</code></p>
+                <div class="line-comment">→ Se o caractere atual for igual ao que procuramos</div>
+                
+                <p><code>return ((char *)s);</code></p>
+                <div class="line-comment">→ Retorna o endereço onde encontrou</div>
+                
+                <p><code>s++;</code></p>
+                <div class="line-comment">→ Avança para o próximo caractere</div>
+                
+                <p><code>if ((char)c == '\0')</code></p>
+                <div class="line-comment">→ Caso especial: se procuramos pelo '\0'</div>
+                
+                <p><code>return ((char *)s);</code></p>
+                <div class="line-comment">→ Retorna o endereço do '\0'</div>
+                
+                <p><code>return (NULL);</code></p>
+                <div class="line-comment">→ Se não encontrou nada, retorna NULL</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_strchr("Hello", 'e') → retorna ponteiro para "ello"</div>
+                <div class="test-case">ft_strchr("Hello", 'o') → retorna ponteiro para "o"</div>
+                <div class="test-case">ft_strchr("Hello", 'x') → retorna NULL (não existe)</div>
+                <div class="test-case">ft_strchr("Hello", '\0') → retorna ponteiro para o final</div>
+            </div>
+        </div>
+
+        <!-- ft_strrchr -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔍⬅️</span>
+                ft_strrchr - "Última aparição!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+char *ft_strrchr(const char *s, int c)
+{
+    char *last;
+
+    last = NULL;
+    while (*s)
+    {
+        if (*s == (char)c)
+            last = (char *)s;
+        s++;
+    }
+    if ((char)c == '\0')
+        return ((char *)s);
+    return (last);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Como ft_strchr, mas procura a ÚLTIMA ocorrência do caractere. É como procurar de trás para frente!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>char *last; last = NULL;</code></p>
+                <div class="line-comment">→ Variável para guardar a última posição encontrada</div>
+                
+                <p><code>if (*s == (char)c)</code></p>
+                <div class="line-comment">→ Quando achar o caractere...</div>
+                
+                <p><code>last = (char *)s;</code></p>
+                <div class="line-comment">→ ...atualiza a última posição (sobrescreve as anteriores)</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_strrchr("Hello", 'l') → ponteiro para último 'l' ("lo")</div>
+                <div class="test-case">ft_strrchr("Hello", 'H') → ponteiro para "Hello" (só tem um)</div>
+                <div class="test-case">ft_strrchr("Hello", 'x') → NULL</div>
+            </div>
+        </div>
+
+        <!-- ft_strncmp -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">⚖️</span>
+                ft_strncmp - "Quem vem primeiro?"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+    size_t i;
+
+    i = 0;
+    while (i < n && (s1[i] || s2[i]))
+    {
+        if (s1[i] != s2[i])
+            return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+        i++;
+    }
+    return (0);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Compara duas strings até n caracteres. Retorna 0 se forem iguais, negativo se s1 < s2, positivo se s1 > s2. É como comparar palavras no dicionário!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>while (i < n && (s1[i] || s2[i]))</code></p>
+                <div class="line-comment">→ Para se chegou no limite n OU se ambas strings terminaram</div>
+                
+                <p><code>if (s1[i] != s2[i])</code></p>
+                <div class="line-comment">→ Se os caracteres forem diferentes</div>
+                
+                <p><code>return ((unsigned char)s1[i] - (unsigned char)s2[i]);</code></p>
+                <div class="line-comment">→ Retorna a diferença (unsigned para lidar com chars especiais)</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_strncmp("Hello", "Hello", 5) → 0 (iguais)</div>
+                <div class="test-case">ft_strncmp("Apple", "Banana", 5) → negativo ('A' < 'B')</div>
+                <div class="test-case">ft_strncmp("Hello", "Help", 3) → 0 (primeiros 3 são iguais)</div>
+            </div>
+        </div>
+
+        <!-- ft_strlcpy -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📋</span>
+                ft_strlcpy - "Copia com segurança!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+    size_t i;
+    size_t srclen;
+
+    srclen = ft_strlen(src);
+    if (dstsize == 0)
+        return (srclen);
+    i = 0;
+    while (i < dstsize - 1 && src[i])
+    {
+        dst[i] = src[i];
+        i++;
+    }
+    dst[i] = '\0';
+    return (srclen);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Copia src para dst de forma segura, garantindo que não vai estourar o buffer. Sempre termina com '\0' e retorna o tamanho da string original!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">Copia no máximo dstsize-1 caracteres</div>
+                <div class="test-case">Sempre adiciona '\0' no final</div>
+                <div class="test-case">Retorna o tamanho total que seria copiado</div>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h3>🔑 Lembre-se:</h3>
+            <p><strong>A libft é seu kit de ferramentas essencial - quanto melhor você a conhecer, mais fáceis serão os próximos desafios da 42!</strong></p>
+        </div>
+
+        <div class="navigation">
+            <a href="../libft_guide_home.html" class="nav-button secondary">
+                ← Voltar ao Menu
+            </a>
+            <div style="text-align: center;">
+                <h3>🎯 Próximo passo</h3>
+                <p>Parabéns! Você dominou as funções de string! 🎉</p>
+                <p>Agora vamos para as <strong>Funções de Memória</strong> - que são mais técnicas!</p>
+            </div>
+            <a href="../memory/libft_memory_guide.html" class="nav-button">
+                Continuar para Memória →
+            </a>
+        </div>
+    </div>
+</body>
+</html>
