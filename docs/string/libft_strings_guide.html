@@ -338,6 +338,26 @@ size_t ft_strlen(const char *s)
                 <p>Conta quantos caracteres tem na string, SEM contar o '\0' do final. É como contar as pérolas no colar!</p>
             </div>
 
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>size_t ft_strlen(const char *s)</code></p>
+                <div class="line-comment">→ size_t = tipo unsigned para tamanhos</div>
+                <div class="line-comment">→ const char *s = promete não modificar a string</div>
+                
+                <p><code>size_t len; len = 0;</code></p>
+                <div class="line-comment">→ Contador inicializado em 0</div>
+                
+                <p><code>while (s[len])</code></p>
+                <div class="line-comment">→ Enquanto o caractere atual não for '\0'</div>
+                <div class="line-comment">→ s[len] acessa o caractere na posição len</div>
+                
+                <p><code>len++;</code></p>
+                <div class="line-comment">→ Incrementa o contador e continua</div>
+                
+                <p><code>return (len);</code></p>
+                <div class="line-comment">→ Retorna quantos caracteres contamos</div>
+            </div>
+
             <div class="example">
                 <h3>🧪 Exemplos práticos:</h3>
                 <div class="test-case">ft_strlen("Hello") → retorna 5</div>
@@ -374,6 +394,34 @@ char *ft_strchr(const char *s, int c)
             <div class="explanation">
                 <h3>🤔 O que essa função faz?</h3>
                 <p>Procura um caractere específico na string e retorna o endereço onde o encontrou. Se não achar, retorna NULL. É como um GPS para caracteres!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>char *ft_strchr(const char *s, int c)</code></p>
+                <div class="line-comment">→ Retorna ponteiro para char encontrado</div>
+                <div class="line-comment">→ int c porque pode receber valores como EOF</div>
+                
+                <p><code>while (*s)</code></p>
+                <div class="line-comment">→ Percorre string até encontrar '\0'</div>
+                <div class="line-comment">→ *s desreferencia o ponteiro atual</div>
+                
+                <p><code>if (*s == (char)c)</code></p>
+                <div class="line-comment">→ Compara caractere atual com o procurado</div>
+                <div class="line-comment">→ (char)c converte int para char</div>
+                
+                <p><code>return ((char *)s);</code></p>
+                <div class="line-comment">→ Retorna ponteiro para onde achou</div>
+                <div class="line-comment">→ Cast remove const do ponteiro</div>
+                
+                <p><code>s++;</code></p>
+                <div class="line-comment">→ Avança para próximo caractere</div>
+                
+                <p><code>if ((char)c == '\0')</code></p>
+                <div class="line-comment">→ Caso especial: procurando o '\0'</div>
+                
+                <p><code>return (NULL);</code></p>
+                <div class="line-comment">→ Não encontrou o caractere</div>
             </div>
 
             <div class="example">
@@ -421,6 +469,35 @@ char *ft_strrchr(const char *s, int c)
                 <p>Como ft_strchr, mas encontra a ÚLTIMA ocorrência do caractere. É como procurar de trás para frente!</p>
             </div>
 
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>char *ft_strrchr(const char *s, int c)</code></p>
+                <div class="line-comment">→ 'r' = reverse, busca da direita para esquerda</div>
+                
+                <p><code>char *last_occurrence; last_occurrence = NULL;</code></p>
+                <div class="line-comment">→ Guarda o endereço da última vez que achou</div>
+                <div class="line-comment">→ Inicializa com NULL (não achou ainda)</div>
+                
+                <p><code>while (*s)</code></p>
+                <div class="line-comment">→ Percorre TODA a string</div>
+                
+                <p><code>if (*s == (char)c)</code></p>
+                <div class="line-comment">→ Achou o caractere!</div>
+                
+                <p><code>last_occurrence = (char *)s;</code></p>
+                <div class="line-comment">→ Atualiza para esta posição</div>
+                <div class="line-comment">→ Se achar de novo, vai sobrescrever</div>
+                
+                <p><code>s++;</code></p>
+                <div class="line-comment">→ Continua procurando até o fim</div>
+                
+                <p><code>if ((char)c == '\0')</code></p>
+                <div class="line-comment">→ Caso especial: procurando '\0'</div>
+                
+                <p><code>return (last_occurrence);</code></p>
+                <div class="line-comment">→ Retorna a ÚLTIMA posição encontrada</div>
+            </div>
+
             <div class="example">
                 <h3>🧪 Exemplos práticos:</h3>
                 <div class="test-case">ft_strrchr("Hello World", 'l') → ponteiro para "ld"</div>
@@ -457,6 +534,34 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
             <div class="explanation">
                 <h3>🤔 O que essa função faz?</h3>
                 <p>Compara duas strings até n caracteres. Retorna 0 se iguais, negativo se s1 < s2, positivo se s1 > s2!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>int ft_strncmp(const char *s1, const char *s2, size_t n)</code></p>
+                <div class="line-comment">→ Retorna int: 0, negativo ou positivo</div>
+                <div class="line-comment">→ n = máximo de caracteres para comparar</div>
+                
+                <p><code>if (n == 0) return (0);</code></p>
+                <div class="line-comment">→ Se n=0, não compara nada = iguais</div>
+                
+                <p><code>size_t i; i = 0;</code></p>
+                <div class="line-comment">→ Contador para posição atual</div>
+                
+                <p><code>while (i < n && s1[i] && s2[i] && s1[i] == s2[i])</code></p>
+                <div class="line-comment">→ Enquanto: dentro do limite E</div>
+                <div class="line-comment">→ s1[i] não é '\0' E s2[i] não é '\0' E</div>
+                <div class="line-comment">→ caracteres são iguais</div>
+                
+                <p><code>i++;</code></p>
+                <div class="line-comment">→ Avança para próximo caractere</div>
+                
+                <p><code>if (i == n) return (0);</code></p>
+                <div class="line-comment">→ Comparou n caracteres, todos iguais</div>
+                
+                <p><code>return ((unsigned char)s1[i] - (unsigned char)s2[i]);</code></p>
+                <div class="line-comment">→ Subtrai valores ASCII dos caracteres diferentes</div>
+                <div class="line-comment">→ unsigned char evita problemas com chars negativos</div>
             </div>
 
             <div class="example">
@@ -499,6 +604,35 @@ size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
             <div class="explanation">
                 <h3>🤔 O que essa função faz?</h3>
                 <p>Copia src para dst, mas garante que não vai passar do tamanho máximo. Sempre termina com '\0'! É a versão segura de strcpy!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)</code></p>
+                <div class="line-comment">→ dst = destino, src = origem, dstsize = tamanho do buffer</div>
+                <div class="line-comment">→ Retorna tamanho da src (para detectar truncamento)</div>
+                
+                <p><code>size_t srclen; srclen = ft_strlen(src);</code></p>
+                <div class="line-comment">→ Calcula tamanho da string origem</div>
+                
+                <p><code>if (dstsize == 0) return (srclen);</code></p>
+                <div class="line-comment">→ Buffer de tamanho 0 = não copia nada</div>
+                
+                <p><code>size_t i; i = 0;</code></p>
+                <div class="line-comment">→ Contador para copiar caractere por caractere</div>
+                
+                <p><code>while (i < dstsize - 1 && src[i])</code></p>
+                <div class="line-comment">→ Copia até: (dstsize-1) OU fim da src</div>
+                <div class="line-comment">→ -1 reserva espaço para '\0'</div>
+                
+                <p><code>dst[i] = src[i]; i++;</code></p>
+                <div class="line-comment">→ Copia caractere e avança</div>
+                
+                <p><code>dst[i] = '\0';</code></p>
+                <div class="line-comment">→ SEMPRE termina com '\0'</div>
+                
+                <p><code>return (srclen);</code></p>
+                <div class="line-comment">→ Retorna tamanho original (para verificar truncamento)</div>
             </div>
 
             <div class="example">
@@ -550,6 +684,40 @@ size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
                 <p>Adiciona src no final de dst, respeitando o tamanho máximo. É como colar duas strings sem estourar o buffer!</p>
             </div>
 
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>size_t ft_strlcat(char *dst, const char *src, size_t dstsize)</code></p>
+                <div class="line-comment">→ Concatena src no final de dst</div>
+                
+                <p><code>size_t dstlen; dstlen = ft_strlen(dst);</code></p>
+                <div class="line-comment">→ Tamanho atual da string destino</div>
+                
+                <p><code>size_t srclen; srclen = ft_strlen(src);</code></p>
+                <div class="line-comment">→ Tamanho da string a ser adicionada</div>
+                
+                <p><code>if (dstsize <= dstlen)</code></p>
+                <div class="line-comment">→ Buffer muito pequeno ou igual ao que já tem</div>
+                
+                <p><code>return (dstsize + srclen);</code></p>
+                <div class="line-comment">→ Retorna tamanho que TERIA se fosse possível</div>
+                
+                <p><code>size_t i; i = 0;</code></p>
+                <div class="line-comment">→ Contador para caracteres de src</div>
+                
+                <p><code>while (src[i] && (dstlen + i) < (dstsize - 1))</code></p>
+                <div class="line-comment">→ Copia enquanto: src tem chars E cabe no buffer</div>
+                <div class="line-comment">→ (dstlen + i) = posição atual no dst</div>
+                
+                <p><code>dst[dstlen + i] = src[i]; i++;</code></p>
+                <div class="line-comment">→ Adiciona caractere no final de dst</div>
+                
+                <p><code>dst[dstlen + i] = '\0';</code></p>
+                <div class="line-comment">→ Termina string com '\0'</div>
+                
+                <p><code>return (dstlen + srclen);</code></p>
+                <div class="line-comment">→ Retorna tamanho total da string resultante</div>
+            </div>
+
             <div class="example">
                 <h3>🧪 Exemplos práticos:</h3>
                 <div class="test-case">dst="Hello", src=" World" → "Hello World"</div>
@@ -595,6 +763,44 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
                 <p>Procura uma substring (needle) dentro de uma string (haystack), mas só nos primeiros 'len' caracteres. É como procurar agulha no palheiro!</p>
             </div>
 
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>char *ft_strnstr(const char *haystack, const char *needle, size_t len)</code></p>
+                <div class="line-comment">→ haystack = onde procurar, needle = o que procurar</div>
+                <div class="line-comment">→ len = limite de caracteres para buscar</div>
+                
+                <p><code>if (!*needle) return ((char *)haystack);</code></p>
+                <div class="line-comment">→ Needle vazia = sempre encontra no início</div>
+                
+                <p><code>size_t h; h = 0;</code></p>
+                <div class="line-comment">→ Índice para percorrer haystack</div>
+                
+                <p><code>while (haystack[h] && h < len)</code></p>
+                <div class="line-comment">→ Percorre haystack até o limite len</div>
+                
+                <p><code>size_t n; n = 0;</code></p>
+                <div class="line-comment">→ Índice para percorrer needle</div>
+                
+                <p><code>while (haystack[h + n] == needle[n] && (h + n) < len && needle[n])</code></p>
+                <div class="line-comment">→ Compara caractere por caractere</div>
+                <div class="line-comment">→ Enquanto: chars iguais E dentro do limite E needle não acabou</div>
+                
+                <p><code>n++;</code></p>
+                <div class="line-comment">→ Avança na comparação</div>
+                
+                <p><code>if (!needle[n])</code></p>
+                <div class="line-comment">→ Needle acabou = encontrou a substring completa!</div>
+                
+                <p><code>return ((char *)&haystack[h]);</code></p>
+                <div class="line-comment">→ Retorna ponteiro para onde começou a match</div>
+                
+                <p><code>h++;</code></p>
+                <div class="line-comment">→ Tenta na próxima posição do haystack</div>
+                
+                <p><code>return (NULL);</code></p>
+                <div class="line-comment">→ Não encontrou a substring</div>
+            </div>
+
             <div class="example">
                 <h3>🧪 Exemplos práticos:</h3>
                 <div class="test-case">ft_strnstr("Hello World", "World", 11) → "World"</div>
@@ -637,6 +843,39 @@ char *ft_strdup(const char *s1)
             <div class="explanation">
                 <h3>🤔 O que essa função faz?</h3>
                 <p>Cria uma cópia IDÊNTICA da string, alocando memória nova. É como fazer xerox da string!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>char *ft_strdup(const char *s1)</code></p>
+                <div class="line-comment">→ dup = duplicate, cria cópia da string</div>
+                
+                <p><code>char *dup; size_t len; size_t i;</code></p>
+                <div class="line-comment">→ dup = ponteiro para nova string</div>
+                <div class="line-comment">→ len = tamanho, i = contador</div>
+                
+                <p><code>len = ft_strlen(s1);</code></p>
+                <div class="line-comment">→ Calcula quantos caracteres tem s1</div>
+                
+                <p><code>dup = malloc(sizeof(char) * (len + 1));</code></p>
+                <div class="line-comment">→ Aloca memória para len caracteres + '\0'</div>
+                <div class="line-comment">→ sizeof(char) = 1 byte por caractere</div>
+                
+                <p><code>if (!dup) return (NULL);</code></p>
+                <div class="line-comment">→ Se malloc falhou, retorna NULL</div>
+                
+                <p><code>i = 0; while (i < len)</code></p>
+                <div class="line-comment">→ Copia caractere por caractere</div>
+                
+                <p><code>dup[i] = s1[i]; i++;</code></p>
+                <div class="line-comment">→ Copia o caractere e avança</div>
+                
+                <p><code>dup[i] = '\0';</code></p>
+                <div class="line-comment">→ Adiciona '\0' no final</div>
+                
+                <p><code>return (dup);</code></p>
+                <div class="line-comment">→ Retorna ponteiro para nova string</div>
+                <div class="line-comment">→ LEMBRE: precisa dar free(dup) depois!</div>
             </div>
 
             <div class="example">
