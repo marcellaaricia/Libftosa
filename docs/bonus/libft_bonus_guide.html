@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libft - Funções Bonus (Listas Ligadas) 🔗</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.3);
+            height: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 100%; /* 5/5 categorias - COMPLETO! */
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .motivational {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .struct-explanation {
+            background: linear-gradient(45deg, #6c5ce7, #74b9ff);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .function-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .function-title {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block::before {
+            content: "💻 Código";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .explanation {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #5a6fd8;
+        }
+
+        .explanation h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .visual-demo {
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: #2d3748;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .visual-demo h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .example {
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: #2d3748;
+        }
+
+        .example h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .test-case {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-family: monospace;
+        }
+
+        .tips {
+            background: linear-gradient(45deg, #6c5ce7, #74b9ff);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: white;
+        }
+
+        .tips h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .warning {
+            background: linear-gradient(45deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #d63031;
+        }
+
+        .bonus-tip {
+            background: linear-gradient(45deg, #fdcb6e, #e17055);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e84393;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-button.secondary {
+            background: linear-gradient(45deg, #636e72, #2d3436);
+        }
+
+        .nav-button.complete {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            font-size: 18px;
+            padding: 15px 30px;
+        }
+
+        .completion-banner {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .completion-banner h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+        }
+
+        .category-divider {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.3em;
+        }
+
+        .node-visualization {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .function-title {
+                font-size: 1.5em;
+            }
+            .code-block {
+                font-size: 12px;
+            }
+            .navigation {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔗 Libft - Funções Bonus 🔗</h1>
+            <p>Listas Ligadas - A estrutura de dados mais elegante! ✨</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p><strong>Progresso:</strong> LIBFT COMPLETA! (5/5 categorias) 🎉</p>
+        </div>
+
+        <div class="motivational">
+            <h2>🎯 Última etapa - Você chegou no BONUS!</h2>
+            <p>Essas são as funções mais avançadas da libft! 🌟</p>
+            <p>Listas ligadas são fundamentais em programação - domine elas e seja um ninja! 🥷</p>
+        </div>
+
+        <div class="struct-explanation">
+            <h2>📚 Primeiro, vamos entender a estrutura!</h2>
+            <div class="code-block">
+typedef struct s_list
+{
+    void            *content;
+    struct s_list   *next;
+} t_list;
+            </div>
+            <h3>🤔 Como funciona?</h3>
+            <ul>
+                <li><strong>content:</strong> Ponteiro para os dados do nó</li>
+                <li><strong>next:</strong> Ponteiro para o próximo nó da lista</li>
+            </ul>
+            <div class="node-visualization">
+[DATA] → [DATA] → [DATA] → NULL<br>
+  ↑        ↑        ↑<br>
+ nó1      nó2      nó3
+            </div>
+        </div>
+
+        <div class="category-divider">
+            <h2>🏗️ Criação e Adição de Nós</h2>
+            <p>Vamos começar construindo nossa lista!</p>
+        </div>
+
+        <!-- ft_lstnew -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🆕</span>
+                ft_lstnew - "Cria um novo nó!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+t_list *ft_lstnew(void *content)
+{
+    t_list *new_node;
+
+    new_node = malloc(sizeof(t_list));
+    if (!new_node)
+        return (NULL);
+    new_node->content = content;
+    new_node->next = NULL;
+    return (new_node);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Cria um novo nó com o conteúdo especificado. É o primeiro passo para construir qualquer lista!</p>
+            </div>
+
+            <div class="visual-demo">
+                <h3>📊 Visualização:</h3>
+                <div class="node-visualization">
+Antes: (nada)<br><br>
+Depois: [content] → NULL
+                </div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplo prático:</h3>
+                <div class="test-case">t_list *node = ft_lstnew("Hello");</div>
+                <div class="test-case">// Cria: ["Hello"] → NULL</div>
+            </div>
+        </div>
+
+        <!-- ft_lstadd_front -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">⬆️</span>
+                ft_lstadd_front - "Adiciona no início!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_lstadd_front(t_list **lst, t_list *new)
+{
+    if (!lst || !new)
+        return;
+    new->next = *lst;
+    *lst = new;
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Adiciona um novo nó no início da lista. O novo nó vira a cabeça da lista!</p>
+            </div>
+
+            <div class="visual-demo">
+                <h3>📊 Visualização:</h3>
+                <div class="node-visualization">
+Antes: [A] → [B] → NULL<br><br>
+Adicionar [NEW] no início:<br><br>
+Depois: [NEW] → [A] → [B] → NULL
+                </div>
+            </div>
+
+            <div class="bonus-tip">
+                <h3>💡 Por que ponteiro duplo?</h3>
+                <p>Precisamos modificar o ponteiro da lista original, então usamos **lst!</p>
+            </div>
+        </div>
+
+        <!-- ft_lstadd_back -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">⬇️</span>
+                ft_lstadd_back - "Adiciona no final!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_lstadd_back(t_list **lst, t_list *new)
+{
+    t_list *last;
+
+    if (!lst || !new)
+        return;
+    if (!*lst)
+    {
+        *lst = new;
+        return;
+    }
+    last = ft_lstlast(*lst);
+    last->next = new;
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Adiciona um novo nó no final da lista. Precisa percorrer até o último nó!</p>
+            </div>
+
+            <div class="visual-demo">
+                <h3>📊 Visualização:</h3>
+                <div class="node-visualization">
+Antes: [A] → [B] → NULL<br><br>
+Adicionar [NEW] no final:<br><br>
+Depois: [A] → [B] → [NEW] → NULL
+                </div>
+            </div>
+        </div>
+
+        <div class="category-divider">
+            <h2>📏 Informações da Lista</h2>
+            <p>Vamos descobrir coisas sobre nossa lista!</p>
+        </div>
+
+        <!-- ft_lstsize -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📏</span>
+                ft_lstsize - "Conta os nós!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_lstsize(t_list *lst)
+{
+    int count;
+
+    count = 0;
+    while (lst)
+    {
+        count++;
+        lst = lst->next;
+    }
+    return (count);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Conta quantos nós existem na lista. Percorre toda a lista contando!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplo prático:</h3>
+                <div class="test-case">[A] → [B] → [C] → NULL = tamanho 3</div>
+                <div class="test-case">NULL = tamanho 0</div>
+            </div>
+        </div>
+
+        <!-- ft_lstlast -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔚</span>
+                ft_lstlast - "Encontra o último!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+t_list *ft_lstlast(t_list *lst)
+{
+    if (!lst)
+        return (NULL);
+    while (lst->next)
+        lst = lst->next;
+    return (lst);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Retorna um ponteiro para o último nó da lista. Para quando next == NULL!</p>
+            </div>
+
+            <div class="visual-demo">
+                <h3>📊 Visualização:</h3>
+                <div class="node-visualization">
+[A] → [B] → [C] → NULL<br>
+                ↑<br>
+         retorna este
+                </div>
+            </div>
+        </div>
+
+        <div class="category-divider">
+            <h2>🗑️ Remoção e Limpeza</h2>
+            <p>Hora de limpar nossa lista!</p>
+        </div>
+
+        <!-- ft_lstdelone -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🗑️</span>
+                ft_lstdelone - "Deleta um nó!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_lstdelone(t_list *lst, void (*del)(void *))
+{
+    if (!lst || !del)
+        return;
+    del(lst->content);
+    free(lst);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Deleta um nó específico. Chama a função 'del' para liberar o conteúdo e depois libera o nó!</p>
+            </div>
+
+            <div class="warning">
+                <h3>⚠️ ATENÇÃO!</h3>
+                <p>Esta função NÃO desconecta o nó da lista - você precisa fazer isso antes!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplo de função del:</h3>
+                <div class="test-case">void del_content(void *content) { free(content); }</div>
+            </div>
+        </div>
+
+        <!-- ft_lstclear -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🧹</span>
+                ft_lstclear - "Limpa tudo!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_lstclear(t_list **lst, void (*del)(void *))
+{
+    t_list *temp;
+
+    if (!lst || !del)
+        return;
+    while (*lst)
+    {
+        temp = (*lst)->next;
+        ft_lstdelone(*lst, del);
+        *lst = temp;
+    }
+    *lst = NULL;
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Deleta e libera TODA a lista. Vai nó por nó deletando tudo até não sobrar nada!</p>
+            </div>
+
+            <div class="visual-demo">
+                <h3>📊 Visualização:</h3>
+                <div class="node-visualization">
+Antes: [A] → [B] → [C] → NULL<br><br>
+Depois: NULL<br>
+(tudo liberado da memória)
+                </div>
+            </div>
+        </div>
+
+        <div class="category-divider">
+            <h2>🔄 Iteração e Mapeamento</h2>
+            <p>Aplicando funções em toda a lista!</p>
+        </div>
+
+        <!-- ft_lstiter -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔄</span>
+                ft_lstiter - "Aplica função em todos!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_lstiter(t_list *lst, void (*f)(void *))
+{
+    if (!lst || !f)
+        return;
+    while (lst)
+    {
+        f(lst->content);
+        lst = lst->next;
+    }
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Aplica a função 'f' no conteúdo de cada nó da lista. Modifica a lista original!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplo prático:</h3>
+                <div class="test-case">Pode ser usada para imprimir todos os elementos</div>
+                <div class="test-case">Ou modificar todos os valores da lista</div>
+            </div>
+        </div>
+
+        <!-- ft_lstmap -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🗺️</span>
+                ft_lstmap - "Cria nova lista transformada!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+    t_list *new_list;
+    t_list *new_node;
+    void *new_content;
+
+    if (!lst || !f || !del)
+        return (NULL);
+    new_list = NULL;
+    while (lst)
+    {
+        new_content = f(lst->content);
+        new_node = ft_lstnew(new_content);
+        if (!new_node)
+        {
+            ft_lstclear(&new_list, del);
+            return (NULL);
+        }
+        ft_lstadd_back(&new_list, new_node);
+        lst = lst->next;
+    }
+    return (new_list);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Cria uma NOVA lista aplicando a função 'f' em cada elemento. A lista original não é modificada!</p>
+            </div>
+
+            <div class="visual-demo">
+                <h3>📊 Visualização:</h3>
+                <div class="node-visualization">
+Lista original: [1] → [2] → [3] → NULL<br><br>
+Aplicar f(x) = x * 2:<br><br>
+Nova lista: [2] → [4] → [6] → NULL
+                </div>
+            </div>
+
+            <div class="warning">
+                <h3>⚠️ IMPORTANTE!</h3>
+                <p>Se algo der errado, a função limpa toda a nova lista que estava sendo criada!</p>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h3>💡 Dicas essenciais para listas ligadas:</h3>
+            <ul>
+                <li><strong>Sempre verificar NULL:</strong> Listas podem estar vazias!</li>
+                <li><strong>Ponteiro duplo:</strong> Use quando precisar modificar a cabeça da lista</li>
+                <li><strong>Percorrer com cuidado:</strong> Sempre guarde referência antes de avançar</li>
+                <li><strong>Liberar memória:</strong> Sempre libere content E o nó</li>
+                <li><strong>Função del:</strong> Precisa saber como liberar o content</li>
+                <li><strong>Teste com lista vazia:</strong> Sempre teste casos extremos</li>
+            </ul>
+        </div>
+
+        <div class="bonus-tip">
+            <h3>🚀 Padrões comuns com listas:</h3>
+            <ul>
+                <li><strong>Percorrer:</strong> while (lst) { ... lst = lst->next; }</li>
+                <li><strong>Encontrar último:</strong> while (lst->next) lst = lst->next;</li>
+                <li><strong>Adicionar no início:</strong> new->next = *lst; *lst = new;</li>
+                <li><strong>Salvar próximo:</strong> temp = current->next (antes de deletar)</li>
+            </ul>
+        </div>
+
+        <div class="completion-banner">
+            <h2>🎉 PARABÉNS! 🎉</h2>
+            <p>Você completou TODA a libft!</p>
+            <p>Agora você é oficialmente um mestre das funções fundamentais de C! 🥇</p>
+            <div style="font-size: 3em; margin: 20px 0;">🏆✨🚀</div>
+            <p><strong>Próximos passos:</strong> Use sua libft nos próximos projetos da 42!</p>
+        </div>
+
+        <div class="navigation">
+            <a href="../additional/libft_additional_guide.html" class="nav-button secondary">
+                ← Voltar para Funções Adicionais
+            </a>
+            <div style="text-align: center;">
+                <h3>🏁 LIBFT COMPLETA!</h3>
+                <p>Você dominou:</p>
+                <p>✅ Funções de caractere<br>
+                ✅ Funções de string<br>
+                ✅ Funções de memória<br>
+                ✅ Funções adicionais<br>
+                ✅ <strong>Funções de lista (BONUS)</strong></p>
+            </div>
+            <a href="#" class="nav-button complete">
+                🎯 Partir para o próximo projeto!
+            </a>
+        </div>
+    </div>
+</body>
+</html>
