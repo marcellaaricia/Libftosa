@@ -4,7 +4,7 @@
 
 ## 🎮 GUIA VISUAL COMPLETO
 
-**Teste todas as funções da libft em tempo real!**
+**Absorva de forma leve e prática!**
 
 [![🚀 Acessar Guia](https://img.shields.io/badge/🚀_Guia-Libft_Interativo-00ff88?style=for-the-badge)](https://marcellaaricia.github.io/Libftosa/docs/libft_guide_home.html)
 
