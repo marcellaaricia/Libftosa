@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libft - Funções de Caractere 🌟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #5a67d8;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .motivational {
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .function-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .function-title {
+            color: #5a67d8;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block::before {
+            content: "💻 Código";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .explanation {
+            background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #38b2ac;
+        }
+
+        .explanation h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .line-by-line {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .line-comment {
+            color: #718096;
+            font-style: italic;
+            margin-left: 20px;
+            font-size: 0.9em;
+        }
+
+        .example {
+            background: linear-gradient(45deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        .example h3 {
+            color: #d69e2e;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .test-case {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-family: monospace;
+        }
+
+        .tips {
+            background: linear-gradient(45deg, #bee3f8 0%, #ddd6fe 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        .tips h3 {
+            color: #3182ce;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.3);
+            height: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #48bb78, #38b2ac);
+            width: 14.3%; /* 1/7 das funções */
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        .emoji {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .function-title {
+                font-size: 1.5em;
+            }
+            .code-block {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 Libft - Funções de Caractere 🌟</h1>
+            <p>Vamos descomplicar essas funções juntas! Você consegue! 💪</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p><strong>Progresso:</strong> Funções de Caractere (1/5 categorias)</p>
+        </div>
+
+        <div class="motivational">
+            <h2>🎯 Foco no que importa!</h2>
+            <p>Essas funções são como filtros mágicos - elas olham para UM caractere e dizem: "Você é isso ou aquilo?" 🔍</p>
+            <p><strong>Prazo:</strong> Hoje (13) → Entrega (15) = 2 dias para arrasar! ⏰</p>
+        </div>
+
+        <!-- ft_isalpha -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔤</span>
+                ft_isalpha - "É uma letra?"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_isalpha(int c)
+{
+    return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Ela recebe um caractere e pergunta: "Você é uma letra do alfabeto?" Se for A-Z ou a-z, retorna algo diferente de 0 (verdadeiro). Se não for, retorna 0 (falso).</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>int ft_isalpha(int c)</code></p>
+                <div class="line-comment">→ Recebe um int (código ASCII do caractere) e retorna int</div>
+                
+                <p><code>return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));</code></p>
+                <div class="line-comment">→ Verifica se está entre 'a'-'z' OU entre 'A'-'Z'</div>
+                <div class="line-comment">→ Se for verdade, retorna 1, se não, retorna 0</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_isalpha('A') → retorna 1 (verdadeiro)</div>
+                <div class="test-case">ft_isalpha('z') → retorna 1 (verdadeiro)</div>
+                <div class="test-case">ft_isalpha('5') → retorna 0 (falso)</div>
+                <div class="test-case">ft_isalpha('@') → retorna 0 (falso)</div>
+            </div>
+        </div>
+
+        <!-- ft_isdigit -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔢</span>
+                ft_isdigit - "É um número?"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_isdigit(int c)
+{
+    return (c >= '0' && c <= '9');
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Super simples! Verifica se o caractere é um dígito de 0 a 9. É como perguntar: "Você é um numerozinho?"</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>int ft_isdigit(int c)</code></p>
+                <div class="line-comment">→ Mesma estrutura: recebe int, retorna int</div>
+                
+                <p><code>return (c >= '0' && c <= '9');</code></p>
+                <div class="line-comment">→ Bem direto: está entre '0' e '9'? Se sim, retorna 1, se não, 0</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_isdigit('0') → retorna 1 (verdadeiro)</div>
+                <div class="test-case">ft_isdigit('9') → retorna 1 (verdadeiro)</div>
+                <div class="test-case">ft_isdigit('a') → retorna 0 (falso)</div>
+                <div class="test-case">ft_isdigit(' ') → retorna 0 (falso)</div>
+            </div>
+        </div>
+
+        <!-- ft_isalnum -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔤🔢</span>
+                ft_isalnum - "É letra OU número?"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_isalnum(int c)
+{
+    return (ft_isalpha(c) || ft_isdigit(c));
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Essa é esperta! Ela usa as duas funções que já fizemos. É como dizer: "Você é letra OU número? Qualquer um dos dois serve!"</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>return (ft_isalpha(c) || ft_isdigit(c));</code></p>
+                <div class="line-comment">→ Chama ft_isalpha E ft_isdigit</div>
+                <div class="line-comment">→ Se QUALQUER uma retornar verdadeiro, retorna verdadeiro</div>
+                <div class="line-comment">→ Só retorna falso se ambas retornarem falso</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_isalnum('A') → retorna 1 (é letra)</div>
+                <div class="test-case">ft_isalnum('5') → retorna 1 (é número)</div>
+                <div class="test-case">ft_isalnum('@') → retorna 0 (nem letra nem número)</div>
+                <div class="test-case">ft_isalnum(' ') → retorna 0 (nem letra nem número)</div>
+            </div>
+        </div>
+
+        <!-- ft_isascii -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📟</span>
+                ft_isascii - "É ASCII válido?"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_isascii(int c)
+{
+    return (c >= 0 && c <= 127);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>ASCII vai de 0 até 127. É como perguntar: "Você está dentro da faixa de caracteres que o computador consegue entender bem?"</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>return (c >= 0 && c <= 127);</code></p>
+                <div class="line-comment">→ Verifica se está na faixa 0-127 (tabela ASCII padrão)</div>
+                <div class="line-comment">→ Inclui letras, números, símbolos e caracteres de controle</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_isascii('A') → retorna 1 (65 está em 0-127)</div>
+                <div class="test-case">ft_isascii(50) → retorna 1 (está na faixa)</div>
+                <div class="test-case">ft_isascii(200) → retorna 0 (maior que 127)</div>
+                <div class="test-case">ft_isascii(-1) → retorna 0 (menor que 0)</div>
+            </div>
+        </div>
+
+        <!-- ft_isprint -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">👁️</span>
+                ft_isprint - "Dá para ver na tela?"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_isprint(int c)
+{
+    return (c >= 32 && c <= 126);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Verifica se o caractere é "imprimível" - ou seja, se você consegue VER ele na tela. Caracteres como espaço, letras, números e símbolos são imprimíveis. Caracteres como "enter" e "tab" não são.</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>return (c >= 32 && c <= 126);</code></p>
+                <div class="line-comment">→ 32 = espaço (primeiro caractere visível)</div>
+                <div class="line-comment">→ 126 = ~ (último caractere visível da tabela ASCII)</div>
+                <div class="line-comment">→ Tudo entre esses valores você consegue ver na tela</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_isprint(' ') → retorna 1 (espaço é visível)</div>
+                <div class="test-case">ft_isprint('A') → retorna 1 (letra é visível)</div>
+                <div class="test-case">ft_isprint('\n') → retorna 0 (quebra de linha não é visível)</div>
+                <div class="test-case">ft_isprint('\t') → retorna 0 (tab não é visível)</div>
+            </div>
+        </div>
+
+        <!-- ft_toupper -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📢</span>
+                ft_toupper - "Vira MAIÚSCULA!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_toupper(int c)
+{
+    if (c >= 'a' && c <= 'z')
+        return (c - 32);
+    return (c);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Se receber uma letra minúscula, transforma em maiúscula. Se não for minúscula, deixa como está. É como um "botão caps lock" para um caractere só!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>if (c >= 'a' && c <= 'z')</code></p>
+                <div class="line-comment">→ Primeiro verifica: é uma letra minúscula?</div>
+                
+                <p><code>return (c - 32);</code></p>
+                <div class="line-comment">→ Se for, subtrai 32 (diferença entre 'a' e 'A' na tabela ASCII)</div>
+                
+                <p><code>return (c);</code></p>
+                <div class="line-comment">→ Se não for minúscula, retorna o caractere sem mudança</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_toupper('a') → retorna 'A' (65)</div>
+                <div class="test-case">ft_toupper('z') → retorna 'Z' (90)</div>
+                <div class="test-case">ft_toupper('A') → retorna 'A' (já é maiúscula)</div>
+                <div class="test-case">ft_toupper('5') → retorna '5' (não é letra)</div>
+            </div>
+        </div>
+
+        <!-- ft_tolower -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🤫</span>
+                ft_tolower - "vira minúscula..."
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_tolower(int c)
+{
+    if (c >= 'A' && c <= 'Z')
+        return (c + 32);
+    return (c);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>É o contrário da ft_toupper! Se receber uma MAIÚSCULA, transforma em minúscula. É como sussurrar em vez de gritar.</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>if (c >= 'A' && c <= 'Z')</code></p>
+                <div class="line-comment">→ Verifica: é uma letra MAIÚSCULA?</div>
+                
+                <p><code>return (c + 32);</code></p>
+                <div class="line-comment">→ Se for, SOMA 32 (vai de 'A' para 'a')</div>
+                
+                <p><code>return (c);</code></p>
+                <div class="line-comment">→ Se não for maiúscula, deixa como está</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_tolower('A') → retorna 'a' (97)</div>
+                <div class="test-case">ft_tolower('Z') → retorna 'z' (122)</div>
+                <div class="test-case">ft_tolower('a') → retorna 'a' (já é minúscula)</div>
+                <div class="test-case">ft_tolower('5') → retorna '5' (não é letra)</div>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h3>💡 Dicas importantes para a 42:</h3>
+            <ul>
+                <li><strong>Norma:</strong> Todas essas funções seguem a norma da 42 (linhas com máximo 80 caracteres, etc.)</li>
+                <li><strong>Return:</strong> Sempre retornam int, mesmo quando trabalham com char</li>
+                <li><strong>Tabela ASCII:</strong> Lembre que 'A' = 65, 'a' = 97, diferença de 32</li>
+                <li><strong>Proteção:</strong> Essas funções não quebram se receber valores estranhos</li>
+                <li><strong>Teste:</strong> Teste com caracteres limites ('A', 'Z', 'a', 'z', '0', '9')</li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <h3>🎯 Próximo passo</h3>
+            <p>Parabéns! Você dominou as funções de caractere! 🎉</p>
+            <p>Agora vamos para as <strong>Funções de String</strong> - que são mais divertidas!</p>
+            <button class="nav-button" onclick="alert('Pronta para as funções de string? Vamos nessa! 💪')">
+                Continuar para Strings →
+            </button>
+        </div>
+    </div>
+</body>
+</html>
