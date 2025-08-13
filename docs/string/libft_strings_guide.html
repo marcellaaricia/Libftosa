@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libft - Funções de String 📝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #e91e63;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.3);
+            height: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e91e63, #f093fb);
+            width: 28.6%; /* 2/7 categorias */
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .motivational {
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .function-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #e91e63;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .function-title {
+            color: #e91e63;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block::before {
+            content: "💻 Código";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #e91e63;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .explanation {
+            background: linear-gradient(45deg, #fdcb6e, #e17055);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #d63031;
+        }
+
+        .explanation h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .line-by-line {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .line-comment {
+            color: #718096;
+            font-style: italic;
+            margin-left: 20px;
+            font-size: 0.9em;
+        }
+
+        .example {
+            background: linear-gradient(45deg, #ff7675, #fd79a8);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: white;
+        }
+
+        .example h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .test-case {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-family: monospace;
+        }
+
+        .tips {
+            background: linear-gradient(45deg, #a29bfe, #fd79a8);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: white;
+        }
+
+        .tips h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #e91e63, #f093fb);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-button.secondary {
+            background: linear-gradient(45deg, #636e72, #2d3436);
+        }
+
+        .memory-visual {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .string-visual {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .char-box {
+            background: white;
+            border: 2px solid #e91e63;
+            padding: 10px;
+            min-width: 40px;
+            text-align: center;
+            border-radius: 5px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .char-box.null {
+            background: #fdcb6e;
+            color: #2d3748;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .function-title {
+                font-size: 1.5em;
+            }
+            .code-block {
+                font-size: 12px;
+            }
+            .navigation {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Libft - Funções de String 📝</h1>
+            <p>Agora vamos trabalhar com arrays de caracteres! Strings são diversão pura! 💖</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p><strong>Progresso:</strong> Funções de String (2/5 categorias)</p>
+        </div>
+
+        <div class="motivational">
+            <h2>🎯 Entendendo Strings</h2>
+            <p>String é um array de char que termina com '\0' (caractere nulo). É como um colar de letrinhas! 📿</p>
+            
+            <div class="string-visual">
+                <div class="char-box">H</div>
+                <div class="char-box">e</div>
+                <div class="char-box">l</div>
+                <div class="char-box">l</div>
+                <div class="char-box">o</div>
+                <div class="char-box null">\0</div>
+            </div>
+            <p><em>↑ Assim que "Hello" fica na memória!</em></p>
+        </div>
+
+        <!-- ft_strlen -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📏</span>
+                ft_strlen - "Quantas letrinhas?"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+size_t ft_strlen(const char *s)
+{
+    size_t len;
+
+    len = 0;
+    while (s[len])
+        len++;
+    return (len);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Conta quantos caracteres tem na string, SEM contar o '\0' do final. É como contar as pérolas no colar!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>size_t ft_strlen(const char *s)</code></p>
+                <div class="line-comment">→ Recebe ponteiro para string, retorna size_t (unsigned)</div>
+                <div class="line-comment">→ const = promete não modificar a string</div>
+                
+                <p><code>size_t len; len = 0;</code></p>
+                <div class="line-comment">→ Contador inicializado em 0</div>
+                
+                <p><code>while (s[len])</code></p>
+                <div class="line-comment">→ Enquanto o caractere atual não for '\0'</div>
+                
+                <p><code>len++;</code></p>
+                <div class="line-comment">→ Incrementa o contador e avança na string</div>
+                
+                <p><code>return (len);</code></p>
+                <div class="line-comment">→ Retorna quantos caracteres contamos</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_strlen("Hello") → retorna 5</div>
+                <div class="test-case">ft_strlen("") → retorna 0 (string vazia)</div>
+                <div class="test-case">ft_strlen("42") → retorna 2</div>
+                <div class="test-case">ft_strlen("A") → retorna 1</div>
+            </div>
+        </div>
+
+        <!-- ft_strchr -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔍</span>
+                ft_strchr - "Onde tá essa letra?"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+char *ft_strchr(const char *s, int c)
+{
+    while (*s)
+    {
+        if (*s == (char)c)
+            return ((char *)s);
+        s++;
+    }
+    if ((char)c == '\0')
+        return ((char *)s);
+    return (NULL);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Procura um caractere específico na string e retorna o endereço onde o encontrou. Se não achar, retorna NULL. É como um GPS para caracteres!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>char *ft_strchr(const char *s, int c)</code></p>
+                <div class="line-comment">→ Recebe string e caractere a procurar, retorna ponteiro</div>
+                
+                <p><code>while (*s)</code></p>
+                <div class="line-comment">→ Percorre a string caractere por caractere</div>
+                
+                <p><code>if
