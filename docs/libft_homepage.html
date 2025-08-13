@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libft - Guia Visual Completo 🌟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 30px;
+            border-radius: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            color: #5a67d8;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3em;
+            color: #4a5568;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .countdown {
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-overview {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card:hover::before {
+            left: 100%;
+        }
+
+        .category-emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .category-count {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .category-desc {
+            font-size: 0.95em;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .category-card.char { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .category-card.string { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .category-card.memory { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .category-card.additional { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+        .category-card.bonus { background: linear-gradient(135deg, #fa709a, #fee140); }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            padding: 25px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .tips-section {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .tip-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #d69e2e;
+        }
+
+        .tip-title {
+            font-weight: bold;
+            color: #744210;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .footer {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .motivation-quote {
+            font-size: 1.3em;
+            color: #5a67d8;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .progress-grid,
+            .stats-grid,
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+
+        /* Animações */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .countdown {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>🌟 Libft - Guia Visual Completo</h1>
+            <p class="hero-subtitle">Domine todas as 43 funções da libft de forma didática e colorida!</p>
+            
+            <div class="countdown">
+                ⏰ <strong>PRAZO:</strong> 2 dias para arrasar! (13/08 → 15/08)
+            </div>
+        </div>
+
+        <!-- Progress Overview -->
+        <div class="progress-overview">
+            <h2 style="text-align: center; color: #5a67d8; margin-bottom: 20px; font-size: 2.2em;">
+                🗂️ Estrutura do Repositório
+            </h2>
+            <p style="text-align: center; font-size: 1.1em; color: #4a5568;">
+                Clique em cada categoria para acessar o guia detalhado!
+            </p>
+
+            <div class="progress-grid">
+                <a href="./docs/character/libft_caracteres_guide.html" class="category-card char">
+                    <span class="category-emoji">🔤</span>
+                    <div class="category-title">Funções de Caractere</div>
+                    <div class="category-count">7 funções</div>
+                    <div class="category-desc">Verificar e manipular caracteres individuais. As mais fáceis para começar!</div>
+                </a>
+
+                <a href="./docs/strings/libft_strings_guide.html" class="category-card string">
+                    <span class="category-emoji">📝</span>
+                    <div class="category-title">Funções de String</div>
+                    <div class="category-count">8 funções</div>
+                    <div class="category-desc">Manipular arrays de caracteres. Trabalhar com palavras e textos.</div>
+                </a>
+
+                <a href="./docs/memory/libft_memory_guide.html" class="category-card memory">
+                    <span class="category-emoji">🧠</span>
+                    <div class="category-title">Funções de Memória</div>
+                    <div class="category-count">7 funções</div>
+                    <div class="category-desc">Manipular blocos de memória brutos. Copiar, mover e comparar dados.</div>
+                </a>
+
+                <a href="./docs/additional/libft_additional_guide.html" class="category-card additional">
+                    <span class="category-emoji">🔧</span>
+                    <div class="category-title">Funções Adicionais</div>
+                    <div class="category-count">12 funções</div>
+                    <div class="category-desc">Funções extras que não existem na libc. As mais criativas!</div>
+                </a>
+
+                <a href="./docs/bonus/libft_bonus_guide.html" class="category-card bonus">
+                    <span class="category-emoji">🔗</span>
+                    <div class="category-title">Funções Bonus</div>
+                    <div class="category-count">9 funções</div>
+                    <div class="category-desc">Listas ligadas. Para quem quer nota máxima!</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <h2 style="color: #5a67d8; margin-bottom: 20px; font-size: 2em;">📊 Visão Geral do Projeto</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">43</div>
+                    <div class="stat-label">Funções Totais</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Categorias</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Dias Restantes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Você Consegue!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tips-section">
+            <h2 style="color: #744210; margin-bottom: 20px; font-size: 2em; text-align: center;">💡 Dicas para Mandar Bem</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-title">📚 Ordem de Estudo</div>
+                    <p>Comece pelas Funções de Caractere → Strings → Memória → Adicionais → Bonus</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-title">🧪 Teste Sempre</div>
+                    <p>Implemente uma função, teste ela bem, só depois parta para a próxima!</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-title">📏 Norma da 42</div>
+                    <p>Max 80 caracteres por linha, max 25 linhas por função, sem for/do-while/switch</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-title">🔧 Makefile</div>
+                    <p>Não esqueça do Makefile com as regras: all, clean, fclean, re, bonus</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-title">📋 libft.h</div>
+                    <p>Declare todas as funções no header e inclua as bibliotecas necessárias</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-title">🎯 Foco no Essencial</div>
+                    <p>Se o tempo estiver apertado, foque no obrigatório primeiro, bonus depois!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="motivation-quote">
+                "Cada função que você domina é um passo mais perto do seu sucesso na 42!" 🚀
+            </div>
+            <p>Criado com 💜 para você arrasar na libft!</p>
+            <p style="margin-top: 15px; color: #666;">
+                Escolha uma categoria acima e comece sua jornada! ✨
+            </p>
+        </div>
+    </div>
+</body>
+</html>
