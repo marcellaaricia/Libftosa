@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libft - Funções de Memória 🧠</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #0984e3;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.3);
+            height: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0984e3, #74b9ff);
+            width: 60%; /* 3/5 categorias */
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .motivational {
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .function-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #0984e3;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .function-title {
+            color: #0984e3;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block::before {
+            content: "💻 Código";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #0984e3;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .explanation {
+            background: linear-gradient(45deg, #55a3ff, #003d82);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #0066cc;
+        }
+
+        .explanation h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .line-by-line {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .line-comment {
+            color: #718096;
+            font-style: italic;
+            margin-left: 20px;
+            font-size: 0.9em;
+        }
+
+        .example {
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: #2d3748;
+        }
+
+        .example h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .test-case {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-family: monospace;
+        }
+
+        .tips {
+            background: linear-gradient(45deg, #6c5ce7, #74b9ff);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: white;
+        }
+
+        .tips h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #0984e3, #74b9ff);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-button.secondary {
+            background: linear-gradient(45deg, #636e72, #2d3436);
+        }
+
+        .memory-visual {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .memory-block {
+            display: inline-block;
+            background: white;
+            border: 2px solid #0984e3;
+            padding: 8px 12px;
+            margin: 2px;
+            border-radius: 5px;
+            color: #0984e3;
+            font-weight: bold;
+            min-width: 40px;
+        }
+
+        .memory-block.highlight {
+            background: #fdcb6e;
+            color: #2d3748;
+        }
+
+        .warning {
+            background: linear-gradient(45deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #d63031;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            .function-title {
+                font-size: 1.5em;
+            }
+            .code-block {
+                font-size: 12px;
+            }
+            .navigation {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 Libft - Funções de Memória 🌟</h1>
+            <p>Vamos descomplicar essas funções juntas! Você consegue! 💪</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p><strong>Progresso:</strong> Funções de Memória (3/5 categorias)</p>
+        </div>
+
+        <div class="motivational">
+            <h2>🎯 Foco no que importa!</h2>
+            <p>Memória é como um grande armário - você pode guardar qualquer tipo de coisa em qualquer gaveta! 🗃️</p>
+            <p>Diferente das strings, aqui trabalhamos com <strong>bytes brutos</strong> - sem se importar se é char, int ou qualquer coisa!</p>
+            
+            <div class="memory-visual">
+                <div class="memory-block">42</div>
+                <div class="memory-block">A</div>
+                <div class="memory-block highlight">00</div>
+                <div class="memory-block">FF</div>
+                <div class="memory-block">7E</div>
+            </div>
+            <p><em>↑ Cada bloquinho é 1 byte na memória!</em></p>
+        </div>
+
+        <!-- ft_memset -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🎨</span>
+                ft_memset - "Pinta tudo da mesma cor!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void *ft_memset(void *b, int c, size_t len)
+{
+    size_t i;
+    unsigned char *ptr;
+
+    ptr = (unsigned char *)b;
+    i = 0;
+    while (i < len)
+    {
+        ptr[i] = (unsigned char)c;
+        i++;
+    }
+    return (b);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Preenche um bloco de memória com o mesmo valor. É como pegar um pincel e pintar len bytes da mesma cor!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>void *ft_memset(void *b, int c, size_t len)</code></p>
+                <div class="line-comment">→ void* = pode receber qualquer tipo de ponteiro</div>
+                <div class="line-comment">→ c = valor para preencher, len = quantos bytes</div>
+                
+                <p><code>unsigned char *ptr = (unsigned char *)b;</code></p>
+                <div class="line-comment">→ Converte para unsigned char* para acessar byte por byte</div>
+                
+                <p><code>ptr[i] = (unsigned char)c;</code></p>
+                <div class="line-comment">→ Preenche cada byte com o valor c</div>
+                
+                <p><code>return (b);</code></p>
+                <div class="line-comment">→ Retorna o ponteiro original (útil para encadear funções)</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_memset(buffer, 0, 10) → zera 10 bytes</div>
+                <div class="test-case">ft_memset(buffer, 'A', 5) → preenche 5 bytes com 'A'</div>
+                <div class="test-case">ft_memset(buffer, 42, 3) → preenche 3 bytes com valor 42</div>
+            </div>
+        </div>
+
+        <!-- ft_bzero -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🧹</span>
+                ft_bzero - "Limpa tudo!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void ft_bzero(void *s, size_t n)
+{
+    ft_memset(s, 0, n);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Super simples! É só um atalho para ft_memset com valor 0. É como um "apagador" de memória!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>ft_memset(s, 0, n);</code></p>
+                <div class="line-comment">→ Usa nossa ft_memset para zerar n bytes</div>
+                <div class="line-comment">→ É literalmente só isso! 😄</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_bzero(buffer, 100) → zera 100 bytes</div>
+                <div class="test-case">Muito usada para limpar estruturas antes de usar</div>
+            </div>
+        </div>
+
+        <!-- ft_memcpy -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">📄</span>
+                ft_memcpy - "Xerox da memória!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void *ft_memcpy(void *dst, const void *src, size_t n)
+{
+    size_t i;
+    unsigned char *d;
+    const unsigned char *s;
+
+    if (!dst && !src)
+        return (NULL);
+    d = (unsigned char *)dst;
+    s = (const unsigned char *)src;
+    i = 0;
+    while (i < n)
+    {
+        d[i] = s[i];
+        i++;
+    }
+    return (dst);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Copia n bytes de src para dst. É como uma fotocopiadora - copia exatamente o que tem, byte por byte!</p>
+            </div>
+
+            <div class="warning">
+                <h3>⚠️ ATENÇÃO!</h3>
+                <p>ft_memcpy NÃO funciona se src e dst se sobrepõem! Para isso, use ft_memmove!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>if (!dst && !src) return (NULL);</code></p>
+                <div class="line-comment">→ Proteção: se ambos forem NULL, retorna NULL</div>
+                
+                <p><code>d = (unsigned char *)dst;</code></p>
+                <div class="line-comment">→ Converte ponteiros para unsigned char*</div>
+                
+                <p><code>d[i] = s[i];</code></p>
+                <div class="line-comment">→ Copia byte por byte</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">Copiar arrays, estruturas, qualquer coisa!</div>
+                <div class="test-case">Mais rápida que ft_memmove, mas menos segura</div>
+            </div>
+        </div>
+
+        <!-- ft_memmove -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🚚</span>
+                ft_memmove - "Mudança segura!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void *ft_memmove(void *dst, const void *src, size_t len)
+{
+    unsigned char *d;
+    const unsigned char *s;
+
+    if (!dst && !src)
+        return (NULL);
+    d = (unsigned char *)dst;
+    s = (const unsigned char *)src;
+    if (d > s)
+    {
+        while (len--)
+            d[len] = s[len];
+    }
+    else
+        ft_memcpy(dst, src, len);
+    return (dst);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Como ft_memcpy, mas funciona mesmo quando src e dst se sobrepõem! É mais inteligente - decide se copia da esquerda→direita ou direita→esquerda!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>if (d > s)</code></p>
+                <div class="line-comment">→ Se dst está "depois" de src na memória</div>
+                
+                <p><code>while (len--) d[len] = s[len];</code></p>
+                <div class="line-comment">→ Copia de trás para frente (evita sobrescrever dados)</div>
+                
+                <p><code>else ft_memcpy(dst, src, len);</code></p>
+                <div class="line-comment">→ Se não há sobreposição, usa memcpy normal</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">Mover dados dentro do mesmo array</div>
+                <div class="test-case">Mais segura que memcpy, mas um pouquinho mais lenta</div>
+            </div>
+        </div>
+
+        <!-- ft_memchr -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🔍</span>
+                ft_memchr - "Caça ao byte!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void *ft_memchr(const void *s, int c, size_t n)
+{
+    size_t i;
+    const unsigned char *ptr;
+
+    ptr = (const unsigned char *)s;
+    i = 0;
+    while (i < n)
+    {
+        if (ptr[i] == (unsigned char)c)
+            return ((void *)&ptr[i]);
+        i++;
+    }
+    return (NULL);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Procura um byte específico em um bloco de memória. É como strchr, mas para qualquer tipo de dado!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>if (ptr[i] == (unsigned char)c)</code></p>
+                <div class="line-comment">→ Se encontrou o byte procurado</div>
+                
+                <p><code>return ((void *)&ptr[i]);</code></p>
+                <div class="line-comment">→ Retorna ponteiro para onde encontrou</div>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">Procurar qualquer valor em qualquer tipo de array</div>
+                <div class="test-case">Não para no '\0' como strchr</div>
+            </div>
+        </div>
+
+        <!-- ft_memcmp -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">⚖️</span>
+                ft_memcmp - "Qual é diferente?"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+int ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+    size_t i;
+    const unsigned char *p1;
+    const unsigned char *p2;
+
+    p1 = (const unsigned char *)s1;
+    p2 = (const unsigned char *)s2;
+    i = 0;
+    while (i < n)
+    {
+        if (p1[i] != p2[i])
+            return (p1[i] - p2[i]);
+        i++;
+    }
+    return (0);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Compara dois blocos de memória byte por byte. Como strncmp, mas para qualquer tipo de dado!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">Comparar arrays, estruturas, qualquer coisa!</div>
+                <div class="test-case">Não para no '\0' - compara exatamente n bytes</div>
+            </div>
+        </div>
+
+        <!-- ft_calloc -->
+        <div class="function-card">
+            <div class="function-title">
+                <span class="emoji">🏗️</span>
+                ft_calloc - "Constrói e limpa!"
+            </div>
+            
+            <div class="code-block">
+#include "libft.h"
+
+void *ft_calloc(size_t count, size_t size)
+{
+    void *ptr;
+    size_t total;
+
+    total = count * size;
+    ptr = malloc(total);
+    if (!ptr)
+        return (NULL);
+    ft_bzero(ptr, total);
+    return (ptr);
+}
+            </div>
+
+            <div class="explanation">
+                <h3>🤔 O que essa função faz?</h3>
+                <p>Aloca memória E zera ela! É como malloc + ft_bzero juntos. Muito útil para criar arrays limpos!</p>
+            </div>
+
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                <p><code>total = count * size;</code></p>
+                <div class="line-comment">→ Calcula total de bytes necessários</div>
+                
+                <p><code>ptr = malloc(total);</code></p>
+                <div class="line-comment">→ Aloca a memória</div>
+                
+                <p><code>ft_bzero(ptr, total);</code></p>
+                <div class="line-comment">→ Zera toda a memória alocada</div>
+            </div>
+
+            <div class="warning">
+                <h3>⚠️ LEMBRE-SE!</h3>
+                <p>Toda memória alocada com calloc precisa ser liberada com free()!</p>
+            </div>
+
+            <div class="example">
+                <h3>🧪 Exemplos práticos:</h3>
+                <div class="test-case">ft_calloc(10, sizeof(int)) → array de 10 ints zerados</div>
+                <div class="test-case">ft_calloc(50, 1) → buffer de 50 bytes zerados</div>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h3>💡 Dicas importantes das funções de memória:</h3>
+            <ul>
+                <li><strong>void*:</strong> Aceita qualquer tipo de ponteiro</li>
+                <li><strong>unsigned char:</strong> Garante que trabalhamos com bytes (0-255)</li>
+                <li><strong>Sobreposição:</strong> Use memmove se src e dst podem se sobrepor</li>
+                <li><strong>NULL:</strong> Sempre verifique ponteiros NULL antes de usar</li>
+                <li><strong>Bytes vs Chars:</strong> Memória trabalha com bytes brutos, não se importa com '\0'</li>
+            </ul>
+        </div>
+
+        <div class="tips">
+            <h3>🔑 Lembre-se:</h3>
+            <p><strong>A libft é seu kit de ferramentas essencial - quanto melhor você a conhecer, mais fáceis serão os próximos desafios da 42!</strong></p>
+        </div>
+
+        <div class="navigation">
+            <a href="../libft_guide_home.html" class="nav-button secondary">
+                ← Voltar ao Menu
+            </a>
+            <div style="text-align: center;">
+                <h3>🎯 Próximo passo</h3>
+                <p>Parabéns! Você dominou as funções de memória! 🎉</p>
+                <p>Agora vamos para as <strong>Funções Adicionais</strong> - as mais criativas!</p>
+            </div>
+            <a href="../additional/libft_additional_guide.html" class="nav-button">
+                Continuar para Adicionais →
+            </a>
+        </div>
+    </div>
+</body>
+</html>
