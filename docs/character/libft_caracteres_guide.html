@@ -181,8 +181,25 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 15px;
-            text-align: center;
             margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .navigation .center-content {
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .navigation {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         .nav-button {
@@ -534,7 +551,7 @@ int ft_tolower(int c)
             <a href="../libft_guide_home.html" class="nav-button secondary">
                 ← Voltar ao Menu
             </a>
-            <div style="text-align: center;">
+            <div class="center-content">
                 <h3>🎯 Próximo passo</h3>
                 <p>Parabéns! Você dominou as funções de caractere! 🎉</p>
                 <p>Agora vamos para as <strong>Funções de String</strong> - que são mais divertidas!</p>
