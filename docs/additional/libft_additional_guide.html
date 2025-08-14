@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libft - Funções Adicionais 🚀</title>
+    <title>Libft - Funções Adicionais Comentadas 🚀</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
@@ -35,7 +35,7 @@
         }
 
         .header h1 {
-            color: #667eea;
+            color: #e91e63;
             font-size: 2.5em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -51,15 +51,14 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            width: 80%; /* 4/5 categorias */
+            background: linear-gradient(90deg, #e91e63, #f093fb);
+            width: 80%;
             border-radius: 5px;
             transition: width 0.3s ease;
         }
 
         .motivational {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 30px;
@@ -73,7 +72,7 @@
             padding: 25px;
             margin-bottom: 25px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-left: 6px solid #667eea;
+            border-left: 6px solid #e91e63;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -83,7 +82,7 @@
         }
 
         .function-title {
-            color: #667eea;
+            color: #e91e63;
             font-size: 1.8em;
             margin-bottom: 15px;
             display: flex;
@@ -108,7 +107,7 @@
             position: absolute;
             top: -10px;
             left: 15px;
-            background: #667eea;
+            background: #e91e63;
             color: white;
             padding: 5px 15px;
             border-radius: 15px;
@@ -116,13 +115,54 @@
             font-family: 'Comic Sans MS', cursive;
         }
 
-        .explanation {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+        .line-by-line {
+            background: linear-gradient(45deg, #fdcb6e, #e17055);
             padding: 20px;
             border-radius: 15px;
             margin: 15px 0;
-            border-left: 4px solid #5a6fd8;
+            border-left: 4px solid #d63031;
+        }
+
+        .line-by-line h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .code-line {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            border-left: 3px solid #e91e63;
+        }
+
+        .code-snippet {
+            font-family: 'Courier New', monospace;
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: bold;
+            overflow-x: auto;
+        }
+
+        .line-comment {
+            color: #2d3748;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .explanation {
+            background: linear-gradient(45deg, #ff7675, #fd79a8);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            color: white;
         }
 
         .explanation h3 {
@@ -131,36 +171,22 @@
             font-size: 1.2em;
         }
 
-        .line-by-line {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-
-        .line-comment {
-            color: #718096;
-            font-style: italic;
-            margin-left: 20px;
-            font-size: 0.9em;
-        }
-
         .example {
-            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            background: linear-gradient(45deg, #a29bfe, #fd79a8);
             padding: 20px;
             border-radius: 15px;
             margin: 15px 0;
-            color: #2d3748;
+            color: white;
         }
 
         .example h3 {
-            color: #2d3748;
+            color: white;
             margin-bottom: 15px;
             font-size: 1.2em;
         }
 
         .test-case {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.2);
             padding: 10px;
             border-radius: 8px;
             margin: 8px 0;
@@ -168,7 +194,7 @@
         }
 
         .tips {
-            background: linear-gradient(45deg, #6c5ce7, #74b9ff);
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
             padding: 20px;
             border-radius: 15px;
             margin: 15px 0;
@@ -179,6 +205,51 @@
             color: white;
             margin-bottom: 15px;
             font-size: 1.2em;
+        }
+
+        .warning {
+            background: linear-gradient(45deg, #e17055, #d63031);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #d63031;
+        }
+
+        .warning h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .bonus-tip {
+            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #e84393;
+        }
+
+        .bonus-tip h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .category-divider {
+            background: linear-gradient(45deg, #e91e63, #f093fb);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 40px 0;
+            font-size: 1.4em;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .emoji {
+            font-size: 1.5em;
         }
 
         .navigation {
@@ -195,7 +266,7 @@
         }
 
         .nav-button {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #e91e63, #f093fb);
             color: white;
             padding: 12px 25px;
             border: none;
@@ -213,38 +284,6 @@
 
         .nav-button.secondary {
             background: linear-gradient(45deg, #636e72, #2d3436);
-        }
-
-        .warning {
-            background: linear-gradient(45deg, #ff7675, #fd79a8);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid #d63031;
-        }
-
-        .bonus-tip {
-            background: linear-gradient(45deg, #fdcb6e, #e17055);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid #e84393;
-        }
-
-        .emoji {
-            font-size: 1.5em;
-        }
-
-        .category-divider {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 30px 0;
-            font-size: 1.3em;
         }
 
         @media (max-width: 768px) {
@@ -267,18 +306,18 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 Libft - Funções Adicionais 🚀</h1>
-            <p>As funções mais criativas da libft! É aqui que a mágica acontece! ✨</p>
+            <h1>🚀 Libft - Funções Adicionais Comentadas 🚀</h1>
+            <p>Entenda CADA linha de código das funções adicionais! ✨</p>
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
-            <p><strong>Progresso:</strong> Funções Adicionais (4/5 categorias)</p>
+            <p><strong>Progresso:</strong> Funções Adicionais Comentadas (4/5 categorias)</p>
         </div>
 
         <div class="motivational">
-            <h2>🎯 Agora é que fica interessante!</h2>
-            <p>Essas funções não existem na libc padrão - elas são criações especiais da 42! 🌟</p>
-            <p>Aqui você vai criar suas próprias ferramentas poderosas de manipulação de strings e I/O!</p>
+            <h2>🎯 Cada linha explicada!</h2>
+            <p>Agora você vai entender EXATAMENTE o que cada comando faz! 🔥</p>
+            <p>Preparado para dominar a libft linha por linha? 💪</p>
         </div>
 
         <!-- ft_substr -->
@@ -289,8 +328,6 @@
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {
     char *substr;
@@ -318,9 +355,68 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 }
             </div>
 
-            <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Extrai uma substring começando na posição 'start' com tamanho máximo 'len'. É como usar uma tesoura para recortar um pedaço da string!</p>
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">char *ft_substr(char const *s, unsigned int start, size_t len)</div>
+                    <div class="line-comment">→ s = string original, start = posição inicial, len = tamanho máximo</div>
+                    <div class="line-comment">→ Retorna ponteiro para nova string (substring)</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">char *substr; size_t i; size_t s_len;</div>
+                    <div class="line-comment">→ substr = ponteiro para nova string</div>
+                    <div class="line-comment">→ i = contador para loops, s_len = tamanho da string original</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (!s) return (NULL);</div>
+                    <div class="line-comment">→ Proteção: se string é NULL, retorna NULL</div>
+                    <div class="line-comment">→ Evita crash por acesso a memória inválida</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">s_len = ft_strlen(s);</div>
+                    <div class="line-comment">→ Calcula tamanho da string original</div>
+                    <div class="line-comment">→ Precisamos saber onde a string termina</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (start >= s_len) return (ft_strdup(""));</div>
+                    <div class="line-comment">→ Se start está além do fim, retorna string vazia</div>
+                    <div class="line-comment">→ ft_strdup("") cria uma cópia de string vazia</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (len > s_len - start) len = s_len - start;</div>
+                    <div class="line-comment">→ Ajusta len para não passar do fim da string</div>
+                    <div class="line-comment">→ (s_len - start) = caracteres disponíveis a partir de start</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">substr = malloc(sizeof(char) * (len + 1));</div>
+                    <div class="line-comment">→ Aloca memória: len caracteres + 1 para '\0'</div>
+                    <div class="line-comment">→ sizeof(char) = 1 byte por caractere</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (!substr) return (NULL);</div>
+                    <div class="line-comment">→ Verifica se malloc funcionou</div>
+                    <div class="line-comment">→ Se falhou, retorna NULL (sem memória disponível)</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">substr[i] = s[start + i];</div>
+                    <div class="line-comment">→ Copia caractere da posição (start + i) para posição i</div>
+                    <div class="line-comment">→ Exemplo: s[3] vai para substr[0]</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">substr[i] = '\0';</div>
+                    <div class="line-comment">→ Termina a string com caractere nulo</div>
+                    <div class="line-comment">→ Sem isso, a string não funciona direito!</div>
+                </div>
             </div>
 
             <div class="example">
@@ -339,8 +435,6 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 char *ft_strjoin(char const *s1, char const *s2)
 {
     char *result;
@@ -371,15 +465,51 @@ char *ft_strjoin(char const *s1, char const *s2)
 }
             </div>
 
-            <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Junta duas strings criando uma nova string. É como colar dois papéis um do lado do outro!</p>
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">if (!s1 || !s2) return (NULL);</div>
+                    <div class="line-comment">→ Verifica se alguma das strings é NULL</div>
+                    <div class="line-comment">→ Operador || = OU lógico</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">len1 = ft_strlen(s1); len2 = ft_strlen(s2);</div>
+                    <div class="line-comment">→ Calcula tamanho de cada string</div>
+                    <div class="line-comment">→ Precisamos saber quanto alocar</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">result = malloc(sizeof(char) * (len1 + len2 + 1));</div>
+                    <div class="line-comment">→ Aloca espaço para s1 + s2 + '\0'</div>
+                    <div class="line-comment">→ +1 é essencial para o terminador nulo</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">while (i < len1) { result[i] = s1[i]; i++; }</div>
+                    <div class="line-comment">→ Copia todos os caracteres de s1 primeiro</div>
+                    <div class="line-comment">→ i vai de 0 até len1-1</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">while (i < len1 + len2) { result[i] = s2[i - len1]; i++; }</div>
+                    <div class="line-comment">→ Copia s2 começando na posição len1</div>
+                    <div class="line-comment">→ (i - len1) = índice em s2, começando de 0</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">result[i] = '\0';</div>
+                    <div class="line-comment">→ Termina a string concatenada</div>
+                    <div class="line-comment">→ i agora vale len1 + len2</div>
+                </div>
             </div>
 
             <div class="example">
                 <h3>🧪 Exemplos práticos:</h3>
                 <div class="test-case">ft_strjoin("Hello", " World") → "Hello World"</div>
                 <div class="test-case">ft_strjoin("42", "School") → "42School"</div>
+                <div class="test-case">ft_strjoin("", "Test") → "Test"</div>
             </div>
         </div>
 
@@ -391,8 +521,6 @@ char *ft_strjoin(char const *s1, char const *s2)
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 char *ft_strtrim(char const *s1, char const *set)
 {
     size_t start;
@@ -410,9 +538,45 @@ char *ft_strtrim(char const *s1, char const *set)
 }
             </div>
 
-            <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Remove todos os caracteres do conjunto 'set' do início e fim da string. É como aparar as pontas de uma corda!</p>
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">size_t start; size_t end;</div>
+                    <div class="line-comment">→ start = início da parte limpa</div>
+                    <div class="line-comment">→ end = fim da parte limpa</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">start = 0;</div>
+                    <div class="line-comment">→ Começamos do início da string</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">while (s1[start] && ft_strchr(set, s1[start])) start++;</div>
+                    <div class="line-comment">→ Pula caracteres do 'set' no início</div>
+                    <div class="line-comment">→ ft_strchr verifica se s1[start] está em set</div>
+                    <div class="line-comment">→ && = para se não chegou ao fim E achou char em set</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">end = ft_strlen(s1);</div>
+                    <div class="line-comment">→ Começa do final da string</div>
+                    <div class="line-comment">→ end aponta para depois do último caractere</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">while (end > start && ft_strchr(set, s1[end - 1])) end--;</div>
+                    <div class="line-comment">→ Remove caracteres do 'set' do final</div>
+                    <div class="line-comment">→ s1[end - 1] = último caractere válido</div>
+                    <div class="line-comment">→ end > start = não ultrapassar o início</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">return (ft_substr(s1, start, end - start));</div>
+                    <div class="line-comment">→ Retorna substring limpa usando ft_substr</div>
+                    <div class="line-comment">→ (end - start) = tamanho da parte limpa</div>
+                </div>
             </div>
 
             <div class="example">
@@ -423,6 +587,11 @@ char *ft_strtrim(char const *s1, char const *set)
             </div>
         </div>
 
+        <div class="category-divider">
+            <h2>🪓 ft_split - A Mais Complexa!</h2>
+            <p>Vamos quebrar essa função em pedacinhos para entender tudo! 🔥</p>
+        </div>
+
         <!-- ft_split -->
         <div class="function-card">
             <div class="function-title">
@@ -431,8 +600,6 @@ char *ft_strtrim(char const *s1, char const *set)
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 static int count_words(char const *s, char c)
 {
     int count = 0;
@@ -479,21 +646,88 @@ char **ft_split(char const *s, char c)
 }
             </div>
 
-            <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Divide uma string usando um delimitador, criando um array de strings. É como cortar uma frase em palavras!</p>
+            <div class="line-by-line">
+                <h3>📝 Função auxiliar count_words:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">int count = 0; int in_word = 0;</div>
+                    <div class="line-comment">→ count = contador de palavras</div>
+                    <div class="line-comment">→ in_word = flag: 0 = fora de palavra, 1 = dentro de palavra</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (*s != c && !in_word) { in_word = 1; count++; }</div>
+                    <div class="line-comment">→ Se encontra char diferente de 'c' e não está em palavra</div>
+                    <div class="line-comment">→ Marca que entrou em palavra e conta nova palavra</div>
+                    <div class="line-comment">→ !in_word significa "não está em palavra"</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">else if (*s == c) in_word = 0;</div>
+                    <div class="line-comment">→ Se encontra delimitador, sai da palavra atual</div>
+                    <div class="line-comment">→ Marca que não está mais dentro de palavra</div>
+                </div>
+
+                <h3>📝 Função principal ft_split:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">char **result;</div>
+                    <div class="line-comment">→ Array de ponteiros para strings</div>
+                    <div class="line-comment">→ Cada posição vai apontar para uma palavra</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">words = count_words(s, c);</div>
+                    <div class="line-comment">→ Conta quantas palavras existem</div>
+                    <div class="line-comment">→ Precisamos saber quantos ponteiros alocar</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">result = malloc(sizeof(char*) * (words + 1));</div>
+                    <div class="line-comment">→ Aloca array de ponteiros: words + 1 para NULL final</div>
+                    <div class="line-comment">→ sizeof(char*) = tamanho de um ponteiro</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">while (s[i] == c) i++;</div>
+                    <div class="line-comment">→ Pula delimitadores até encontrar início de palavra</div>
+                    <div class="line-comment">→ Exemplo: pula espaços em "  hello"</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">start = i;</div>
+                    <div class="line-comment">→ Marca onde a palavra atual começa</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">while (s[i] && s[i] != c) i++;</div>
+                    <div class="line-comment">→ Encontra final da palavra atual</div>
+                    <div class="line-comment">→ Para quando acha delimitador ou fim da string</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">result[j] = ft_substr(s, start, end - start);</div>
+                    <div class="line-comment">→ Extrai palavra usando ft_substr</div>
+                    <div class="line-comment">→ Guarda no array result na posição j</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">result[j] = NULL;</div>
+                    <div class="line-comment">→ Termina array com NULL</div>
+                    <div class="line-comment">→ Importante: indica fim do array!</div>
+                </div>
             </div>
 
             <div class="warning">
-                <h3>⚠️ ATENÇÃO!</h3>
-                <p>Lembre-se de liberar CADA string do array E o próprio array quando terminar de usar!</p>
+                <h3>⚠️ SUPER IMPORTANTE!</h3>
+                <p>ft_split retorna um array onde cada elemento é uma string alocada dinamicamente!</p>
+                <p>Você precisa liberar CADA string E o próprio array quando terminar de usar!</p>
             </div>
+        </div>
 
-            <div class="example">
-                <h3>🧪 Exemplos práticos:</h3>
-                <div class="test-case">ft_split("Hello World 42", ' ') → ["Hello", "World", "42"]</div>
-                <div class="test-case">ft_split("a,b,c,d", ',') → ["a", "b", "c", "d"]</div>
-            </div>
+        <div class="category-divider">
+            <h2>🔢 Conversões de Tipos</h2>
+            <p>Transformando números em texto e vice-versa! 🎭</p>
         </div>
 
         <!-- ft_itoa -->
@@ -504,8 +738,6 @@ char **ft_split(char const *s, char c)
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 static int get_num_len(int n)
 {
     int len = 0;
@@ -543,9 +775,72 @@ char *ft_itoa(int n)
 }
             </div>
 
-            <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Converte um inteiro para string. É o contrário da ft_atoi - transforma números em texto!</p>
+            <div class="line-by-line">
+                <h3>📝 Função auxiliar get_num_len:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">if (n == 0) return (1);</div>
+                    <div class="line-comment">→ Zero tem tamanho 1 (apenas o dígito "0")</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (n < 0) len++;</div>
+                    <div class="line-comment">→ Se negativo, adiciona 1 para o sinal '-'</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">while (n != 0) { n /= 10; len++; }</div>
+                    <div class="line-comment">→ Divide por 10 até chegar a 0, contando dígitos</div>
+                    <div class="line-comment">→ Exemplo: 123 → 12 → 1 → 0 (3 dígitos)</div>
+                </div>
+
+                <h3>📝 Função principal ft_itoa:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">if (n == -2147483648) return (ft_strdup("-2147483648"));</div>
+                    <div class="line-comment">→ Caso especial: menor int possível</div>
+                    <div class="line-comment">→ Não pode ser convertido para positivo (overflow)</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">len = get_num_len(n);</div>
+                    <div class="line-comment">→ Descobre quantos chars precisamos alocar</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">str[len] = '\0';</div>
+                    <div class="line-comment">→ Coloca '\0' no final da string</div>
+                    <div class="line-comment">→ Fazemos isso ANTES de preencher os dígitos</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">num = (n < 0) ? -n : n;</div>
+                    <div class="line-comment">→ Trabalha com valor absoluto</div>
+                    <div class="line-comment">→ Operador ternário: se n < 0 então -n, senão n</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (n < 0) str[0] = '-';</div>
+                    <div class="line-comment">→ Se negativo, coloca '-' no início</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (n == 0) str[0] = '0';</div>
+                    <div class="line-comment">→ Caso especial: se é zero, coloca '0'</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">str[--len] = (num % 10) + '0';</div>
+                    <div class="line-comment">→ Pega último dígito, converte para char</div>
+                    <div class="line-comment">→ --len = decrementa len ANTES de usar</div>
+                    <div class="line-comment">→ + '0' converte número para ASCII</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">num /= 10;</div>
+                    <div class="line-comment">→ Remove último dígito do número</div>
+                    <div class="line-comment">→ Exemplo: 123 → 12</div>
+                </div>
             </div>
 
             <div class="example">
@@ -553,19 +848,18 @@ char *ft_itoa(int n)
                 <div class="test-case">ft_itoa(42) → "42"</div>
                 <div class="test-case">ft_itoa(-123) → "-123"</div>
                 <div class="test-case">ft_itoa(0) → "0"</div>
+                <div class="test-case">ft_itoa(-2147483648) → "-2147483648"</div>
             </div>
         </div>
 
         <!-- ft_atoi -->
         <div class="function-card">
             <div class="function-title">
-                <span class="emoji">📝</span>
+                <span class="emoji">🔤</span>
                 ft_atoi - "Texto vira número!"
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 int ft_atoi(const char *str)
 {
     int i = 0;
@@ -589,22 +883,60 @@ int ft_atoi(const char *str)
 }
             </div>
 
-            <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Converte uma string para inteiro. Para nos espaços, lê sinais (+/-) e converte dígitos em número!</p>
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">int i = 0; int sign = 1; int result = 0;</div>
+                    <div class="line-comment">→ i = índice, sign = sinal (1 ou -1), result = resultado</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)) i++;</div>
+                    <div class="line-comment">→ Pula espaços e chars de controle (tab, \n, etc)</div>
+                    <div class="line-comment">→ 9 a 13 = \t, \n, \v, \f, \r em ASCII</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (str[i] == '-' || str[i] == '+') { ... }</div>
+                    <div class="line-comment">→ Verifica se tem sinal + ou -</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (str[i] == '-') sign = -1;</div>
+                    <div class="line-comment">→ Se for '-', marca como negativo</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">while (str[i] >= '0' && str[i] <= '9') { ... }</div>
+                    <div class="line-comment">→ Enquanto encontrar dígitos...</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">result = result * 10 + (str[i] - '0');</div>
+                    <div class="line-comment">→ Constrói o número: multiplica por 10 e soma novo dígito</div>
+                    <div class="line-comment">→ (str[i] - '0') converte char para número</div>
+                    <div class="line-comment">→ Exemplo: '5' - '0' = 5</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">return (result * sign);</div>
+                    <div class="line-comment">→ Aplica o sinal ao resultado final</div>
+                </div>
             </div>
 
             <div class="example">
                 <h3>🧪 Exemplos práticos:</h3>
                 <div class="test-case">ft_atoi("42") → 42</div>
                 <div class="test-case">ft_atoi("   -123") → -123</div>
-                <div class="test-case">ft_atoi("+456abc") → 456</div>
+                <div class="test-case">ft_atoi("+456abc") → 456 (para no 'a')</div>
+                <div class="test-case">ft_atoi("  \t\n-789") → -789</div>
             </div>
         </div>
 
         <div class="category-divider">
             <h2>🎨 Funções de Mapeamento</h2>
-            <p>Transforme strings aplicando funções a cada caractere!</p>
+            <p>Transforme strings aplicando funções a cada caractere! 🖌️</p>
         </div>
 
         <!-- ft_strmapi -->
@@ -615,8 +947,6 @@ int ft_atoi(const char *str)
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
     char *result;
@@ -640,14 +970,33 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 }
             </div>
 
-            <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Cria uma nova string aplicando a função 'f' a cada caractere. A função recebe o índice e o caractere!</p>
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">char (*f)(unsigned int, char)</div>
+                    <div class="line-comment">→ Ponteiro para função que recebe índice e char, retorna char</div>
+                    <div class="line-comment">→ Permite passar qualquer função de transformação!</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (!s || !f) return (NULL);</div>
+                    <div class="line-comment">→ Verifica se string e função são válidas</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">result[i] = f(i, s[i]);</div>
+                    <div class="line-comment">→ Aplica função f no caractere atual</div>
+                    <div class="line-comment">→ Passa índice (i) e caractere (s[i]) para a função</div>
+                    <div class="line-comment">→ Guarda resultado na nova string</div>
+                </div>
             </div>
 
-            <div class="example">
-                <h3>🧪 Exemplo prático:</h3>
-                <div class="test-case">Pode ser usada para converter para maiúscula, minúscula, ou qualquer transformação!</div>
+            <div class="bonus-tip">
+                <h3>💡 Exemplo de uso:</h3>
+                <p>Você pode criar uma função que converte para maiúscula baseada no índice:</p>
+                <div class="test-case">char uppercase_even(unsigned int i, char c) { return (i % 2 == 0) ? ft_toupper(c) : c; }</div>
+                <div class="test-case">ft_strmapi("hello", uppercase_even) → "HeLlO"</div>
             </div>
         </div>
 
@@ -659,8 +1008,6 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 void ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
     unsigned int i;
@@ -676,15 +1023,33 @@ void ft_striteri(char *s, void (*f)(unsigned int, char*))
 }
             </div>
 
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">void (*f)(unsigned int, char*)</div>
+                    <div class="line-comment">→ Ponteiro para função que recebe índice e PONTEIRO para char</div>
+                    <div class="line-comment">→ Não retorna nada (void), modifica direto o char</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">f(i, &s[i]);</div>
+                    <div class="line-comment">→ Passa índice e ENDEREÇO do caractere</div>
+                    <div class="line-comment">→ &s[i] = endereço do caractere na posição i</div>
+                    <div class="line-comment">→ Função pode modificar o caractere original!</div>
+                </div>
+            </div>
+
             <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Como ft_strmapi, mas modifica a string original em vez de criar uma nova. Passa o ponteiro para o caractere!</p>
+                <h3>🤔 Diferença entre ft_strmapi e ft_striteri:</h3>
+                <p><strong>ft_strmapi:</strong> Cria nova string, não altera original</p>
+                <p><strong>ft_striteri:</strong> Modifica string original diretamente</p>
             </div>
         </div>
 
         <div class="category-divider">
             <h2>📝 Funções de Output (File Descriptors)</h2>
-            <p>Escreva em arquivos, terminal ou qualquer lugar!</p>
+            <p>Escreva em arquivos, terminal ou qualquer lugar! 🖨️</p>
         </div>
 
         <!-- ft_putchar_fd -->
@@ -695,35 +1060,39 @@ void ft_striteri(char *s, void (*f)(unsigned int, char*))
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 void ft_putchar_fd(char c, int fd)
 {
     write(fd, &c, 1);
 }
             </div>
 
-            <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Escreve um caractere no file descriptor especificado. Super simples - só uma chamada para write!</p>
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">write(fd, &c, 1);</div>
+                    <div class="line-comment">→ Escreve 1 byte (o caractere c) no file descriptor fd</div>
+                    <div class="line-comment">→ &c = endereço do caractere (write precisa de ponteiro)</div>
+                    <div class="line-comment">→ 1 = quantos bytes escrever</div>
+                </div>
             </div>
 
             <div class="bonus-tip">
                 <h3>💡 File Descriptors importantes:</h3>
-                <p><strong>0</strong> = stdin (entrada), <strong>1</strong> = stdout (saída), <strong>2</strong> = stderr (erros)</p>
+                <p><strong>0</strong> = stdin (entrada padrão)</p>
+                <p><strong>1</strong> = stdout (saída padrão - terminal)</p>
+                <p><strong>2</strong> = stderr (saída de erro)</p>
             </div>
         </div>
 
         <!-- ft_putstr_fd -->
         <div class="function-card">
             <div class="function-title">
-                <span class="emoji">📝</span>
+                <span class="emoji">📃</span>
                 ft_putstr_fd - "Escreve uma string!"
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 void ft_putstr_fd(char *s, int fd)
 {
     if (!s)
@@ -732,9 +1101,20 @@ void ft_putstr_fd(char *s, int fd)
 }
             </div>
 
-            <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Escreve uma string inteira no file descriptor. Calcula o tamanho e escreve tudo de uma vez!</p>
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">if (!s) return;</div>
+                    <div class="line-comment">→ Proteção: se string é NULL, não faz nada</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">write(fd, s, ft_strlen(s));</div>
+                    <div class="line-comment">→ Escreve string inteira no file descriptor</div>
+                    <div class="line-comment">→ s = ponteiro para string (já é endereço)</div>
+                    <div class="line-comment">→ ft_strlen(s) = quantos bytes escrever</div>
+                </div>
             </div>
         </div>
 
@@ -746,8 +1126,6 @@ void ft_putstr_fd(char *s, int fd)
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 void ft_putendl_fd(char *s, int fd)
 {
     if (!s)
@@ -757,9 +1135,24 @@ void ft_putendl_fd(char *s, int fd)
 }
             </div>
 
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">ft_putstr_fd(s, fd);</div>
+                    <div class="line-comment">→ Escreve a string usando função que já criamos</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">ft_putchar_fd('\n', fd);</div>
+                    <div class="line-comment">→ Adiciona quebra de linha no final</div>
+                    <div class="line-comment">→ '\n' = new line (Enter)</div>
+                </div>
+            </div>
+
             <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Como ft_putstr_fd, mas adiciona uma quebra de linha no final. Perfeita para imprimir linhas!</p>
+                <h3>🤔 Por que reutilizar funções?</h3>
+                <p>É mais eficiente e organizado! Se precisar modificar algo, muda só em um lugar! 🎯</p>
             </div>
         </div>
 
@@ -771,8 +1164,6 @@ void ft_putendl_fd(char *s, int fd)
             </div>
             
             <div class="code-block">
-#include "libft.h"
-
 void ft_putnbr_fd(int n, int fd)
 {
     if (n == -2147483648)
@@ -791,26 +1182,72 @@ void ft_putnbr_fd(int n, int fd)
 }
             </div>
 
+            <div class="line-by-line">
+                <h3>📝 Linha por linha:</h3>
+                
+                <div class="code-line">
+                    <div class="code-snippet">if (n == -2147483648)</div>
+                    <div class="line-comment">→ Caso especial: menor int possível</div>
+                    <div class="line-comment">→ Não pode ser convertido para positivo (overflow)</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">ft_putstr_fd("-2147483648", fd);</div>
+                    <div class="line-comment">→ Escreve o número como string literal</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (n < 0) { ft_putchar_fd('-', fd); n = -n; }</div>
+                    <div class="line-comment">→ Se negativo, escreve '-' e torna positivo</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">if (n >= 10) ft_putnbr_fd(n / 10, fd);</div>
+                    <div class="line-comment">→ RECURSÃO: imprime primeiro os dígitos da esquerda</div>
+                    <div class="line-comment">→ n / 10 remove último dígito</div>
+                    <div class="line-comment">→ Exemplo: 123 → chama ft_putnbr_fd(12, fd)</div>
+                </div>
+
+                <div class="code-line">
+                    <div class="code-snippet">ft_putchar_fd((n % 10) + '0', fd);</div>
+                    <div class="line-comment">→ Imprime último dígito convertido para char</div>
+                    <div class="line-comment">→ n % 10 = último dígito (123 % 10 = 3)</div>
+                    <div class="line-comment">→ + '0' converte número para ASCII</div>
+                </div>
+            </div>
+
             <div class="explanation">
-                <h3>🤔 O que essa função faz?</h3>
-                <p>Escreve um número inteiro no file descriptor. Usa recursão para imprimir dígito por dígito!</p>
+                <h3>🤔 Como a recursão funciona?</h3>
+                <p><strong>Exemplo: ft_putnbr_fd(123, 1)</strong></p>
+                <p>1. 123 >= 10 → chama ft_putnbr_fd(12, 1)</p>
+                <p>2. 12 >= 10 → chama ft_putnbr_fd(1, 1)</p>
+                <p>3. 1 < 10 → imprime '1'</p>
+                <p>4. volta para 12 → imprime '2'</p>
+                <p>5. volta para 123 → imprime '3'</p>
+                <p><strong>Resultado: "123" 🎯</strong></p>
             </div>
         </div>
 
         <div class="tips">
-            <h3>💡 Dicas importantes das funções adicionais:</h3>
+            <h3>🎯 Resumo das funções adicionais:</h3>
             <ul>
-                <li><strong>Malloc:</strong> Muitas funções alocam memória - sempre verifique se deu certo!</li>
-                <li><strong>Free:</strong> Lembre de liberar tudo que você alocar</li>
-                <li><strong>File Descriptors:</strong> 1=stdout, 2=stderr são os mais usados</li>
-                <li><strong>Proteção:</strong> Sempre verifique parâmetros NULL</li>
-                <li><strong>ft_split:</strong> Precisa liberar cada string E o array</li>
+                <li><strong>Substring/Join/Trim/Split:</strong> Manipulação avançada de strings</li>
+                <li><strong>itoa/atoi:</strong> Conversão entre números e texto</li>
+                <li><strong>strmapi/striteri:</strong> Aplicação de funções customizadas</li>
+                <li><strong>put*_fd:</strong> Escrita em file descriptors</li>
+                <li><strong>Recursão:</strong> ft_putnbr_fd usa recursão inteligentemente</li>
             </ul>
         </div>
 
-        <div class="tips">
-            <h3>🚀 Você está quase lá!</h3>
-            <p><strong>Essas funções são o coração da libft - aprenda elas bem e você vai arrasar nos próximos projetos!</strong></p>
+        <div class="warning">
+            <h3>⚠️ Pontos críticos para lembrar:</h3>
+            <ul>
+                <li><strong>Malloc:</strong> Sempre verificar se retornou NULL</li>
+                <li><strong>Free:</strong> Lembrar de liberar memória alocada</li>
+                <li><strong>ft_split:</strong> Liberar cada string E o array</li>
+                <li><strong>Proteção:</strong> Verificar parâmetros NULL antes de usar</li>
+                <li><strong>-2147483648:</strong> Precisa tratamento especial em itoa e putnbr</li>
+            </ul>
         </div>
 
         <div class="navigation">
